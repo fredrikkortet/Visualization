@@ -12,6 +12,8 @@
 
 #intellij
 .idea/
+#visual studio unwanted files
+src/.vs
 
 # Package Files #
 *.jar
