@@ -3,6 +3,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage[a4paper, total={17cm, 21cm}]{geometry}
 \usepackage{graphicx}
+\usepackage[backend=bibtex]{biblatex}
+\addbibresource{uni.bib}
 \title{Mjukvaruutveckling av visualiseringssystem\\
 \Large {Projektplan}
 }
@@ -29,7 +31,7 @@ fastighetssystemet (via befintlig drivrutin) och lyssnar av trafiken för att lo
 Applikationen behöver vara dynamisk, dvs. kunna laddas med strukturerad data (t.ex. från xml eller csv) för att
 med denna data automatiskt generera visning och kontroller i applikationen enligt uppsatta regler. En skiss kommer görs till applikationen sen programmet kommer delas i små delar för att kunna jobba mer effektivera och kunna strukturera hela koden. Vi komma ha ett möte varannan vecka med företaget och ett möte per vecka med handledaren för att kunna hålla processen på rätt bana och för att undvika onödiga arbete. \newline
 \subsection{Språk \& verktyg}
-Applikationen kommer vara i C\# för att kunna koppla applikationen med .NET drivrutin. Det behöver bara vara i Windows då företaget bara använder Windows. Andra föredel med C\# är att graphical user interface(GUI) delen är "inbyggd". Det går att använda andra språk också t.ex C eller C++ och dessa har fördelar som har en snabb exekveringstid och är lättviktigt språk. C och C++ är cross-plattform program fast C \& C++ har separata GUI bibliotek därför det är lämplig att använda C\# för programmera applikationen.Visual studio 2019 och C\# kommer används för att programmera applikationen för att det är enklare att lansera koden och har bra verktyg att debugger och integrerar med dll filen.\newline 
+Applikationen kommer vara i C\# för att kunna koppla applikationen med .NET drivrutin. Det behöver bara vara i Windows då företaget bara använder Windows. Andra föredel med C\# är att graphical user interface(GUI) delen är "inbyggd". Det går att använda andra språk också t.ex C eller C++ och dessa har fördelar som har en snabb exekveringstid och är lättviktigt språk. C och C++ är cross-plattform program fast C \& C++ har separata GUI bibliotek därför det är lämplig att använda C\# för programmera applikationen.Visual studio 2019 och C\# kommer används för att programmera applikationen för att det är enklare att lansera koden och har bra verktyg att debugger och integrerar med dll filen.\cite{CPROG}\newline 
 \subsection{Person \& Ekonomi}
 Sundas Munir kommer vara vår handledare genom att hon hjälper med att skriva rapporten och diskutera kring problem. Marcus Karlsson är vår kontakt person på Teknisk Byrån som kommer ge oss mer information och resurser. Projekt processen har inte något kostnad för att företaget kommer fixa visa hårdvaror för att testa applikationen i slutet. Projektet kommer görs i Högskolan eller hemma då behöver vi inte träffa företaget då finns inget reskostnad heller. \newline
 \subsection{Materiel}
@@ -69,5 +71,7 @@ Under UtExpo kommer mjukvaran och relation mellan mjukvaran och hårdvaror visas
         \hline
     \end{tabular}
 \end{table}
+\newpage
+\printbibliography
 \end{document}
 
