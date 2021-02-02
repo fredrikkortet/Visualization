@@ -30,6 +30,7 @@ namespace Visualization
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Window));
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.Treeview = new System.Windows.Forms.TreeView();
             this.Textbox = new System.Windows.Forms.RichTextBox();
@@ -157,6 +158,7 @@ namespace Visualization
             | System.Windows.Forms.Keys.O)));
             this.StripOpen.Size = new System.Drawing.Size(224, 26);
             this.StripOpen.Text = "Open";
+            this.StripOpen.Click += new System.EventHandler(this.StripOpen_Click);
             // 
             // StripSave
             // 
@@ -164,6 +166,7 @@ namespace Visualization
             this.StripSave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.StripSave.Size = new System.Drawing.Size(224, 26);
             this.StripSave.Text = "Save";
+            this.StripSave.Click += new System.EventHandler(this.StripSave_Click);
             // 
             // StripSaveAS
             // 
@@ -211,6 +214,7 @@ namespace Visualization
             this.Controls.Add(this.Textbox);
             this.Controls.Add(this.Treeview);
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Window";
