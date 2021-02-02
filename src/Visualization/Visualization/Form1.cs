@@ -16,10 +16,5 @@ namespace Visualization
         {
             InitializeComponent();
         }
-
-        private void OpenItem_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
