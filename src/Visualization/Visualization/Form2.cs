@@ -10,19 +10,11 @@ using System.Windows.Forms;
 
 namespace Visualization
 {
-    public partial class Window : Form
+    public partial class fortext : Form
     {
-        public Window()
+        public fortext()
         {
             InitializeComponent();
         }
-
-        private void StripAbout_Click(object sender, EventArgs e)
-        {
-            fortext vilas = new fortext();
-            vilas.Show();
-        }
-
-   
     }
 }

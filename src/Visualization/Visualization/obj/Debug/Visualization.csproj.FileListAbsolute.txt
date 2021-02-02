@@ -18,3 +18,4 @@ C:\Users\rohul\OneDrive\Desktop\File\Ex_jobb\Visualization\src\Visualization\Vis
 C:\Users\rohul\OneDrive\Desktop\File\Ex_jobb\Visualization\src\Visualization\Visualization\obj\Debug\Visualization.csproj.CoreCompileInputs.cache
 C:\Users\rohul\OneDrive\Desktop\File\Ex_jobb\Visualization\src\Visualization\Visualization\obj\Debug\Visualization.exe
 C:\Users\rohul\OneDrive\Desktop\File\Ex_jobb\Visualization\src\Visualization\Visualization\obj\Debug\Visualization.pdb
+C:\Users\fredr\Documents\Visualization\src\Visualization\Visualization\obj\Debug\Visualization.fortext.resources
