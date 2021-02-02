@@ -18,6 +18,7 @@ namespace Visualization
             InitializeComponent();
         }
 
+<<<<<<< HEAD
         private void StripOpen_Click(object sender, EventArgs e)
         {
             OpenFileDialog openfile = new OpenFileDialog();
@@ -50,5 +51,14 @@ namespace Visualization
 
             
         }
+=======
+        private void StripAbout_Click(object sender, EventArgs e)
+        {
+            fortext vilas = new fortext();
+            vilas.Show();
+        }
+
+   
+>>>>>>> d83e1a55f1d00c464fe35abfb1dfd03805a9bba6
     }
 }
