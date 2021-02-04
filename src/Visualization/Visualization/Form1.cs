@@ -18,16 +18,51 @@ namespace Visualization
             InitializeComponent();
         }
 
-<<<<<<< HEAD
         private void StripOpen_Click(object sender, EventArgs e)
         {
             OpenFileDialog openfile = new OpenFileDialog();
             openfile.Filter = "csv files only|*.csv|All Files(*.*)|*.*";
-           
 
+            string line; 
             if (openfile.ShowDialog().Equals(DialogResult.OK))
             {
                 StreamReader read = new StreamReader(File.OpenRead(openfile.FileName));
+                line = read.ReadLine();
+                int nodecount = -1;
+                while (line != null)
+                {
+                    
+                    string [] temp = line.Split(';');
+                    if(temp[0] != " ")
+                    { 
+                        TreeNode mainNode = new TreeNode();
+                        mainNode.Name = "mainNode";
+                        mainNode.Text = temp[0];
+                        Treeview.Nodes.Add(mainNode);
+                        nodecount++;
+
+                        
+                    }
+                    if (temp[1] != " ")
+                    {
+                        TreeNode node = new TreeNode();
+                        node.Name = "Node";
+                        node.Text = temp[1];
+                        Treeview.Nodes[nodecount].Nodes.Add(node);
+
+                    }
+                    if (temp[2] != " ")
+                    {
+                        TreeNode childnode = new TreeNode();
+                        childnode.Name = "childnode";
+                        childnode.Text = temp[2];
+                        Treeview.Nodes[nodecount].Nodes[0].Nodes.Add(childnode);
+
+                    }
+                    
+                    line = read.ReadLine();
+                }
+
                 Treeview.Text = read.ReadToEnd();
                 read.Dispose();
             }
@@ -35,6 +70,7 @@ namespace Visualization
 
             }
         }
+
 
         private void StripSave_Click(object sender, EventArgs e)
         {
@@ -51,14 +87,12 @@ namespace Visualization
 
             
         }
-=======
-        private void StripAbout_Click(object sender, EventArgs e)
+
+        private void StripAbout_Click_1(object sender, EventArgs e)
         {
             fortext vilas = new fortext();
             vilas.Show();
         }
 
-   
->>>>>>> d83e1a55f1d00c464fe35abfb1dfd03805a9bba6
     }
 }

@@ -29,12 +29,7 @@ namespace Visualization
         /// </summary>
         private void InitializeComponent()
         {
-<<<<<<< HEAD
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Window));
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-=======
->>>>>>> d83e1a55f1d00c464fe35abfb1dfd03805a9bba6
             this.Treeview = new System.Windows.Forms.TreeView();
             this.Textbox = new System.Windows.Forms.RichTextBox();
             this.DataPanel = new System.Windows.Forms.Panel();
@@ -56,31 +51,36 @@ namespace Visualization
             // 
             // Treeview
             // 
-            this.Treeview.Location = new System.Drawing.Point(0, 25);
+            this.Treeview.Location = new System.Drawing.Point(0, 31);
+            this.Treeview.Margin = new System.Windows.Forms.Padding(4);
             this.Treeview.Name = "Treeview";
-            this.Treeview.Size = new System.Drawing.Size(600, 510);
+            this.Treeview.Size = new System.Drawing.Size(799, 627);
             this.Treeview.TabIndex = 2;
+          
             // 
             // Textbox
             // 
-            this.Textbox.Location = new System.Drawing.Point(0, 545);
+            this.Textbox.Location = new System.Drawing.Point(0, 671);
+            this.Textbox.Margin = new System.Windows.Forms.Padding(4);
             this.Textbox.Name = "Textbox";
-            this.Textbox.Size = new System.Drawing.Size(600, 264);
+            this.Textbox.Size = new System.Drawing.Size(799, 324);
             this.Textbox.TabIndex = 3;
             this.Textbox.Text = "";
             // 
             // DataPanel
             // 
-            this.DataPanel.Location = new System.Drawing.Point(606, 114);
+            this.DataPanel.Location = new System.Drawing.Point(808, 140);
+            this.DataPanel.Margin = new System.Windows.Forms.Padding(4);
             this.DataPanel.Name = "DataPanel";
-            this.DataPanel.Size = new System.Drawing.Size(566, 620);
+            this.DataPanel.Size = new System.Drawing.Size(755, 763);
             this.DataPanel.TabIndex = 4;
             // 
             // ButtonCheck
             // 
-            this.ButtonCheck.Location = new System.Drawing.Point(850, 750);
+            this.ButtonCheck.Location = new System.Drawing.Point(1133, 923);
+            this.ButtonCheck.Margin = new System.Windows.Forms.Padding(4);
             this.ButtonCheck.Name = "ButtonCheck";
-            this.ButtonCheck.Size = new System.Drawing.Size(100, 50);
+            this.ButtonCheck.Size = new System.Drawing.Size(133, 62);
             this.ButtonCheck.TabIndex = 5;
             this.ButtonCheck.Text = "Check";
             this.ButtonCheck.UseVisualStyleBackColor = true;
@@ -89,9 +89,10 @@ namespace Visualization
             // 
             this.PathLabel.AutoSize = true;
             this.PathLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PathLabel.Location = new System.Drawing.Point(607, 29);
+            this.PathLabel.Location = new System.Drawing.Point(809, 36);
+            this.PathLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.PathLabel.Name = "PathLabel";
-            this.PathLabel.Size = new System.Drawing.Size(71, 18);
+            this.PathLabel.Size = new System.Drawing.Size(92, 24);
             this.PathLabel.TabIndex = 6;
             this.PathLabel.Text = "Belysning";
             // 
@@ -99,9 +100,10 @@ namespace Visualization
             // 
             this.InfoLabel.AutoSize = true;
             this.InfoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InfoLabel.Location = new System.Drawing.Point(688, 89);
+            this.InfoLabel.Location = new System.Drawing.Point(917, 110);
+            this.InfoLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.InfoLabel.Name = "InfoLabel";
-            this.InfoLabel.Size = new System.Drawing.Size(82, 18);
+            this.InfoLabel.Size = new System.Drawing.Size(102, 24);
             this.InfoLabel.TabIndex = 7;
             this.InfoLabel.Text = "Information";
             // 
@@ -109,9 +111,10 @@ namespace Visualization
             // 
             this.ValueLabel.AutoSize = true;
             this.ValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ValueLabel.Location = new System.Drawing.Point(1033, 89);
+            this.ValueLabel.Location = new System.Drawing.Point(1377, 110);
+            this.ValueLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ValueLabel.Name = "ValueLabel";
-            this.ValueLabel.Size = new System.Drawing.Size(44, 18);
+            this.ValueLabel.Size = new System.Drawing.Size(59, 24);
             this.ValueLabel.TabIndex = 8;
             this.ValueLabel.Text = "Value";
             // 
@@ -122,7 +125,7 @@ namespace Visualization
             this.StripSave,
             this.StripSaveAS});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // StripOpen
@@ -130,7 +133,7 @@ namespace Visualization
             this.StripOpen.Name = "StripOpen";
             this.StripOpen.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.O)));
-            this.StripOpen.Size = new System.Drawing.Size(180, 22);
+            this.StripOpen.Size = new System.Drawing.Size(221, 26);
             this.StripOpen.Text = "Open";
             this.StripOpen.Click += new System.EventHandler(this.StripOpen_Click);
             // 
@@ -138,14 +141,14 @@ namespace Visualization
             // 
             this.StripSave.Name = "StripSave";
             this.StripSave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.StripSave.Size = new System.Drawing.Size(180, 22);
+            this.StripSave.Size = new System.Drawing.Size(221, 26);
             this.StripSave.Text = "Save";
             this.StripSave.Click += new System.EventHandler(this.StripSave_Click);
             // 
             // StripSaveAS
             // 
             this.StripSaveAS.Name = "StripSaveAS";
-            this.StripSaveAS.Size = new System.Drawing.Size(180, 22);
+            this.StripSaveAS.Size = new System.Drawing.Size(221, 26);
             this.StripSaveAS.Text = "Save As...";
             // 
             // StripHelp
@@ -154,7 +157,7 @@ namespace Visualization
             this.StripViewHelp,
             this.StripAbout});
             this.StripHelp.Name = "StripHelp";
-            this.StripHelp.Size = new System.Drawing.Size(44, 20);
+            this.StripHelp.Size = new System.Drawing.Size(55, 24);
             this.StripHelp.Text = "Help";
             // 
             // StripViewHelp
@@ -162,7 +165,7 @@ namespace Visualization
             this.StripViewHelp.Name = "StripViewHelp";
             this.StripViewHelp.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.H)));
-            this.StripViewHelp.Size = new System.Drawing.Size(202, 22);
+            this.StripViewHelp.Size = new System.Drawing.Size(253, 26);
             this.StripViewHelp.Text = "View Help";
             // 
             // StripAbout
@@ -170,9 +173,9 @@ namespace Visualization
             this.StripAbout.Name = "StripAbout";
             this.StripAbout.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.A)));
-            this.StripAbout.Size = new System.Drawing.Size(202, 22);
+            this.StripAbout.Size = new System.Drawing.Size(253, 26);
             this.StripAbout.Text = "About";
-            this.StripAbout.Click += new System.EventHandler(this.StripAbout_Click);
+            this.StripAbout.Click += new System.EventHandler(this.StripAbout_Click_1);
             // 
             // menuStrip1
             // 
@@ -182,8 +185,8 @@ namespace Visualization
             this.StripHelp});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1184, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(1579, 28);
             this.menuStrip1.TabIndex = 9;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -193,10 +196,10 @@ namespace Visualization
             // 
             // Window
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(147)))), ((int)(((byte)(147)))));
-            this.ClientSize = new System.Drawing.Size(1184, 811);
+            this.ClientSize = new System.Drawing.Size(1579, 998);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.ValueLabel);
             this.Controls.Add(this.InfoLabel);
@@ -208,6 +211,7 @@ namespace Visualization
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Window";
             this.Text = "Visualization";
             this.menuStrip1.ResumeLayout(false);
