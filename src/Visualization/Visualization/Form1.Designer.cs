@@ -32,10 +32,10 @@ namespace Visualization
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Window));
             this.Treeview = new System.Windows.Forms.TreeView();
             this.Textbox = new System.Windows.Forms.RichTextBox();
-            this.DataPanel = new System.Windows.Forms.Panel();
+            this.addressPanel = new System.Windows.Forms.Panel();
             this.ButtonCheck = new System.Windows.Forms.Button();
-            this.PathLabel = new System.Windows.Forms.Label();
-            this.InfoLabel = new System.Windows.Forms.Label();
+            this.pathLabel = new System.Windows.Forms.Label();
+            this.addressLabel = new System.Windows.Forms.Label();
             this.ValueLabel = new System.Windows.Forms.Label();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.StripOpen = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,6 +46,9 @@ namespace Visualization
             this.StripAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.infoPanel = new System.Windows.Forms.Panel();
+            this.valuePanel = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,30 +57,30 @@ namespace Visualization
             this.Treeview.Location = new System.Drawing.Point(0, 31);
             this.Treeview.Margin = new System.Windows.Forms.Padding(4);
             this.Treeview.Name = "Treeview";
-            this.Treeview.Size = new System.Drawing.Size(799, 627);
+            this.Treeview.Size = new System.Drawing.Size(755, 627);
             this.Treeview.TabIndex = 2;
-          
+            this.Treeview.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.Treeview_NodeMouseDoubleClick);
             // 
             // Textbox
             // 
-            this.Textbox.Location = new System.Drawing.Point(0, 671);
+            this.Textbox.Location = new System.Drawing.Point(0, 666);
             this.Textbox.Margin = new System.Windows.Forms.Padding(4);
             this.Textbox.Name = "Textbox";
-            this.Textbox.Size = new System.Drawing.Size(799, 324);
+            this.Textbox.Size = new System.Drawing.Size(755, 224);
             this.Textbox.TabIndex = 3;
             this.Textbox.Text = "";
             // 
-            // DataPanel
+            // addressPanel
             // 
-            this.DataPanel.Location = new System.Drawing.Point(808, 140);
-            this.DataPanel.Margin = new System.Windows.Forms.Padding(4);
-            this.DataPanel.Name = "DataPanel";
-            this.DataPanel.Size = new System.Drawing.Size(755, 763);
-            this.DataPanel.TabIndex = 4;
+            this.addressPanel.Location = new System.Drawing.Point(763, 140);
+            this.addressPanel.Margin = new System.Windows.Forms.Padding(4);
+            this.addressPanel.Name = "addressPanel";
+            this.addressPanel.Size = new System.Drawing.Size(173, 614);
+            this.addressPanel.TabIndex = 4;
             // 
             // ButtonCheck
             // 
-            this.ButtonCheck.Location = new System.Drawing.Point(1133, 923);
+            this.ButtonCheck.Location = new System.Drawing.Point(1135, 762);
             this.ButtonCheck.Margin = new System.Windows.Forms.Padding(4);
             this.ButtonCheck.Name = "ButtonCheck";
             this.ButtonCheck.Size = new System.Drawing.Size(133, 62);
@@ -85,33 +88,32 @@ namespace Visualization
             this.ButtonCheck.Text = "Check";
             this.ButtonCheck.UseVisualStyleBackColor = true;
             // 
-            // PathLabel
+            // pathLabel
             // 
-            this.PathLabel.AutoSize = true;
-            this.PathLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PathLabel.Location = new System.Drawing.Point(809, 36);
-            this.PathLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.PathLabel.Name = "PathLabel";
-            this.PathLabel.Size = new System.Drawing.Size(92, 24);
-            this.PathLabel.TabIndex = 6;
-            this.PathLabel.Text = "Belysning";
+            this.pathLabel.AutoSize = true;
+            this.pathLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pathLabel.Location = new System.Drawing.Point(759, 40);
+            this.pathLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.pathLabel.Name = "pathLabel";
+            this.pathLabel.Size = new System.Drawing.Size(0, 24);
+            this.pathLabel.TabIndex = 6;
             // 
-            // InfoLabel
+            // addressLabel
             // 
-            this.InfoLabel.AutoSize = true;
-            this.InfoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InfoLabel.Location = new System.Drawing.Point(917, 110);
-            this.InfoLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.InfoLabel.Name = "InfoLabel";
-            this.InfoLabel.Size = new System.Drawing.Size(102, 24);
-            this.InfoLabel.TabIndex = 7;
-            this.InfoLabel.Text = "Information";
+            this.addressLabel.AutoSize = true;
+            this.addressLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addressLabel.Location = new System.Drawing.Point(767, 112);
+            this.addressLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.addressLabel.Name = "addressLabel";
+            this.addressLabel.Size = new System.Drawing.Size(80, 24);
+            this.addressLabel.TabIndex = 7;
+            this.addressLabel.Text = "Address";
             // 
             // ValueLabel
             // 
             this.ValueLabel.AutoSize = true;
             this.ValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ValueLabel.Location = new System.Drawing.Point(1377, 110);
+            this.ValueLabel.Location = new System.Drawing.Point(1299, 112);
             this.ValueLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ValueLabel.Name = "ValueLabel";
             this.ValueLabel.Size = new System.Drawing.Size(59, 24);
@@ -186,7 +188,7 @@ namespace Visualization
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1579, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1582, 28);
             this.menuStrip1.TabIndex = 9;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -194,18 +196,48 @@ namespace Visualization
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // infoPanel
+            // 
+            this.infoPanel.Location = new System.Drawing.Point(944, 140);
+            this.infoPanel.Margin = new System.Windows.Forms.Padding(4);
+            this.infoPanel.Name = "infoPanel";
+            this.infoPanel.Size = new System.Drawing.Size(343, 614);
+            this.infoPanel.TabIndex = 5;
+            // 
+            // valuePanel
+            // 
+            this.valuePanel.Location = new System.Drawing.Point(1295, 140);
+            this.valuePanel.Margin = new System.Windows.Forms.Padding(4);
+            this.valuePanel.Name = "valuePanel";
+            this.valuePanel.Size = new System.Drawing.Size(223, 614);
+            this.valuePanel.TabIndex = 5;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(944, 112);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(102, 24);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Information";
+            // 
             // Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(147)))), ((int)(((byte)(147)))));
-            this.ClientSize = new System.Drawing.Size(1579, 998);
+            this.ClientSize = new System.Drawing.Size(1582, 903);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.infoPanel);
+            this.Controls.Add(this.valuePanel);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.ValueLabel);
-            this.Controls.Add(this.InfoLabel);
-            this.Controls.Add(this.PathLabel);
+            this.Controls.Add(this.addressLabel);
+            this.Controls.Add(this.pathLabel);
             this.Controls.Add(this.ButtonCheck);
-            this.Controls.Add(this.DataPanel);
+            this.Controls.Add(this.addressPanel);
             this.Controls.Add(this.Textbox);
             this.Controls.Add(this.Treeview);
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
@@ -224,10 +256,10 @@ namespace Visualization
         #endregion
         private System.Windows.Forms.TreeView Treeview;
         private System.Windows.Forms.RichTextBox Textbox;
-        private System.Windows.Forms.Panel DataPanel;
+        private System.Windows.Forms.Panel addressPanel;
         private System.Windows.Forms.Button ButtonCheck;
-        private System.Windows.Forms.Label PathLabel;
-        private System.Windows.Forms.Label InfoLabel;
+        private System.Windows.Forms.Label pathLabel;
+        private System.Windows.Forms.Label addressLabel;
         private System.Windows.Forms.Label ValueLabel;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem StripOpen;
@@ -238,6 +270,9 @@ namespace Visualization
         private System.Windows.Forms.ToolStripMenuItem StripAbout;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Panel infoPanel;
+        private System.Windows.Forms.Panel valuePanel;
+        private System.Windows.Forms.Label label1;
     }
 }
 
