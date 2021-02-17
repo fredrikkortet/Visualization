@@ -113,7 +113,7 @@ namespace Visualization
             // 
             this.ValueLabel.AutoSize = true;
             this.ValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ValueLabel.Location = new System.Drawing.Point(1299, 112);
+            this.ValueLabel.Location = new System.Drawing.Point(1342, 112);
             this.ValueLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ValueLabel.Name = "ValueLabel";
             this.ValueLabel.Size = new System.Drawing.Size(59, 24);
@@ -201,12 +201,12 @@ namespace Visualization
             this.infoPanel.Location = new System.Drawing.Point(944, 140);
             this.infoPanel.Margin = new System.Windows.Forms.Padding(4);
             this.infoPanel.Name = "infoPanel";
-            this.infoPanel.Size = new System.Drawing.Size(343, 614);
+            this.infoPanel.Size = new System.Drawing.Size(394, 614);
             this.infoPanel.TabIndex = 5;
             // 
             // valuePanel
             // 
-            this.valuePanel.Location = new System.Drawing.Point(1295, 140);
+            this.valuePanel.Location = new System.Drawing.Point(1346, 140);
             this.valuePanel.Margin = new System.Windows.Forms.Padding(4);
             this.valuePanel.Name = "valuePanel";
             this.valuePanel.Size = new System.Drawing.Size(223, 614);

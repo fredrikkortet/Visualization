@@ -2,12 +2,15 @@
 using System.Windows.Forms;
 using System.IO;
 using System.Drawing;
+using System.Collections.Generic;
 
 namespace Visualization
 {
     public partial class Window : Form
     {
-        functions function = new functions();
+        static LinkedList<Room> linkedRooms = new LinkedList<Room>();
+        functions function = new functions(linkedRooms);
+
         public Window()
         {
             InitializeComponent();
@@ -54,26 +57,45 @@ namespace Visualization
                 infoPanel.Controls.Clear();
                 valuePanel.Controls.Clear();
                 pathLabel.Text = e.Node.FullPath;
-                for(int i = 0; i<4; i++)
+                Room activeRoom = null;
+                foreach (Room str in linkedRooms)
+                {
+                    if (str.CompareRoom(e.Node.Text, (string)e.Node.Tag))
+                    {
+                       activeRoom = str;
+                        break;
+                    }
+                }
+                if(activeRoom == null)
+                {
+                    MessageBox.Show("Error message 404 \"Room not found\"");
+
+                }
+                else { 
+                LinkedListNode<string> roomItem = activeRoom.getRoomItem().First;
+                LinkedListNode<string> roomAddress = activeRoom.getAddress().First;
+
+                for (int i = 0; i<activeRoom.getCount()-1; i++)
                 {
                     ComboBox value = new ComboBox();
-                    value.Text = e.Node.Text;
-                    value.Items.AddRange(new string[] {"1","2","3","4" });
+                    value.Location = new Point(0, i * 25);
                     Label firstlabel = new Label();
-                    firstlabel.Location = new Point(0,i*40);
+                    firstlabel.Location = new Point(0, i * 25);
+                    firstlabel.Text = roomAddress.Value;
+                   
                     Label secondlabel = new Label();
-                    secondlabel.Location = new Point(0, i * 40);
-                    firstlabel.Text = e.Node.Text;
-                    secondlabel.Text = e.Node.Text;
-                    addressPanel.Controls.Add(secondlabel);
-                    infoPanel.Controls.Add(firstlabel);
+                        secondlabel.Width = 300;
+                    secondlabel.Location = new Point(0, i * 25);
+                    secondlabel.Text = roomItem.Value;
+                    addressPanel.Controls.Add(firstlabel);
+                    infoPanel.Controls.Add(secondlabel);
                     valuePanel.Controls.Add(value);
+                    roomItem = roomItem.Next;
+                    roomAddress = roomAddress.Next;
                 }
-               
-               
-                
-                
-            }
+                }
+            }//end if
+            
         }
 
        

@@ -11,10 +11,13 @@ namespace Visualization
 
     class functions
     {
-        LinkedList<Room> linkedRooms = new LinkedList<Room>();
+         LinkedList<Room> linkedRooms ;
         LinkedListNode<Room> currentNode;
         Boolean check = true;
-
+        public functions(LinkedList<Room> list)
+        {
+            this.linkedRooms = list;
+        }
         public string[] SkipChar(string[] character)
         {
 
@@ -106,6 +109,7 @@ namespace Visualization
                     {
                         TreeNode childnode = new TreeNode();
                         childnode.Name = "childnode";
+                        childnode.Tag = temp[3];
                         childnode.Text = splitUnderscore[0];
                         treeview.Nodes[nodecount].Nodes[0].Nodes.Add(childnode);
                     }

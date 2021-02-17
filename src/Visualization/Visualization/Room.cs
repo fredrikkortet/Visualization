@@ -6,6 +6,7 @@ public class Room
 	private string room;
 	private LinkedList<string> roomItems;
 	private LinkedList<string> address;
+	private int count = 0;
 	
 	public Room(string room ,string itemRoom, string address)
     {
@@ -13,6 +14,7 @@ public class Room
 		this.address = new LinkedList<string>();
 		this.room = room;
 		addItem(itemRoom, address);
+		count++;
     }
 
 	public Boolean CompareRoom(string rum, string id)
@@ -30,11 +32,24 @@ public class Room
     {
 		roomItems.AddLast(value);
 		this.address.AddLast(address);
+		count++;
     }
 
 	public string getRoom()
     {
 		return room;
     }
+	public int getCount()
+    {
+		return count;
+    }
 
+	public LinkedList<string> getAddress()
+    {
+		return address;
+    }
+	public LinkedList<string> getRoomItem()
+    {
+		return roomItems;
+    }
 }
