@@ -1,0 +1,5 @@
+Private e_Open As EIBA.Interop.Falcon.DeviceOpenError
+Private e_Write As EIBA.Interop.Falcon.DeviceWriteError
+Private WithEvents g As EIBA.Interop.Falcon.GroupData
+Private c As EIBA.Interop.Falcon.ConnectionObject
+Private ClassCreatorObj As Object

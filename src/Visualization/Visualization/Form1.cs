@@ -47,10 +47,10 @@ namespace Visualization
         }
 
 
-         void Treeview_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
-        { 
-            
-            if(e.Node.Nodes.Count == 0)
+        void Treeview_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+
+            if (e.Node.Nodes.Count == 0)
             {
 
                 addressPanel.Controls.Clear();
@@ -62,42 +62,41 @@ namespace Visualization
                 {
                     if (str.CompareRoom(e.Node.Text, (string)e.Node.Tag))
                     {
-                       activeRoom = str;
+                        activeRoom = str;
                         break;
                     }
                 }
-                if(activeRoom == null)
+                if (activeRoom == null)
                 {
                     MessageBox.Show("Error message 404 \"Room not found\"");
 
                 }
-                else { 
-                LinkedListNode<string> roomItem = activeRoom.getRoomItem().First;
-                LinkedListNode<string> roomAddress = activeRoom.getAddress().First;
-
-                for (int i = 0; i<activeRoom.getCount()-1; i++)
+                else
                 {
-                    ComboBox value = new ComboBox();
-                    value.Location = new Point(0, i * 25);
-                    Label firstlabel = new Label();
-                    firstlabel.Location = new Point(0, i * 25);
-                    firstlabel.Text = roomAddress.Value;
-                   
-                    Label secondlabel = new Label();
-                        secondlabel.Width = 300;
-                    secondlabel.Location = new Point(0, i * 25);
-                    secondlabel.Text = roomItem.Value;
-                    addressPanel.Controls.Add(firstlabel);
-                    infoPanel.Controls.Add(secondlabel);
-                    valuePanel.Controls.Add(value);
-                    roomItem = roomItem.Next;
-                    roomAddress = roomAddress.Next;
-                }
-                }
-            }//end if
-            
-        }
+                    LinkedListNode<string> roomItem = activeRoom.getRoomItem().First;
+                    LinkedListNode<string> roomAddress = activeRoom.getAddress().First;
 
-       
+                    for (int i = 0; i < activeRoom.getCount() - 1; i++)
+                    {
+                        ComboBox value = new ComboBox();
+                        value.Location = new Point(0, i * 25);
+                        Label firstlabel = new Label();
+                        firstlabel.Location = new Point(0, i * 25);
+                        firstlabel.Text = roomAddress.Value;
+
+                        Label secondlabel = new Label();
+                        secondlabel.Width = 450;
+                        secondlabel.Location = new Point(0, i * 25);
+                        secondlabel.Text = roomItem.Value;
+                        addressPanel.Controls.Add(firstlabel);
+                        infoPanel.Controls.Add(secondlabel);
+                        valuePanel.Controls.Add(value);
+                        roomItem = roomItem.Next;
+                        roomAddress = roomAddress.Next;
+                    }
+                }
+            }
+
+        }
     }
 }

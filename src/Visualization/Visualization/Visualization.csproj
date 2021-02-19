@@ -33,6 +33,36 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DPT_info">
+      <HintPath>..\..\..\SourceFiles\DPT_info.dll</HintPath>
+    </Reference>
+    <Reference Include="Eiba.Interop.EibaLog">
+      <HintPath>..\..\..\..\..\..\..\..\..\..\Program Files (x86)\Common Files\EIBA sc\Falcon\Eiba.Interop.EibaLog.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Eiba.Interop.FalconConnectionManager">
+      <HintPath>..\..\..\..\..\..\..\..\..\..\Program Files (x86)\Common Files\EIBA sc\Falcon\Eiba.Interop.FalconConnectionManager.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Eiba.Interop.FalconInterfaces">
+      <HintPath>..\..\..\..\..\..\..\..\..\..\Program Files (x86)\Common Files\EIBA sc\Falcon\Eiba.Interop.FalconInterfaces.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Eiba.Interop.FalconInternalInterfaces">
+      <HintPath>..\..\..\..\..\..\..\..\..\..\Program Files (x86)\Common Files\EIBA sc\Falcon\Eiba.Interop.FalconInternalInterfaces.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="EibnetIpImpl, Version=2.2.5437.51283, Culture=neutral, PublicKeyToken=11c4150a44293574, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\..\..\Program Files (x86)\Common Files\EIBA sc\Falcon\EibnetIpImpl.dll</HintPath>
+    </Reference>
+    <Reference Include="EibnetIpTypes, Version=2.2.5437.51283, Culture=neutral, PublicKeyToken=11c4150a44293574, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\..\..\Program Files (x86)\Common Files\EIBA sc\Falcon\EibnetIpTypes.dll</HintPath>
+    </Reference>
+    <Reference Include="FalconEibnetEdi">
+      <HintPath>..\..\..\..\..\..\..\..\..\..\Program Files (x86)\Common Files\EIBA sc\Falcon\FalconEibnetEdi.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
@@ -60,9 +90,9 @@
       <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
     <Compile Include="functions.cs" />
+    <Compile Include="getConnection_Int.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RadTreeViewItem.cs" />
     <Compile Include="Room.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -92,6 +122,134 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\SecurityAndMaintenance_Alert.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="EibaClassCreatorLib">
+      <Guid>{1D6ABDE4-9468-11D4-AEB5-00105AA2DD97}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="EibaLog">
+      <Guid>{B4F27632-F0FA-11D3-B7B1-0000AB9116DF}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="ETECPRJINFOLib">
+      <Guid>{3E673B67-0005-11D4-AF16-00105AA2DD97}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="FalconClientComponentsLib">
+      <Guid>{401B0433-FF4A-11D3-B34B-009027434FFA}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>1</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="FALCONCONNECTIONMANAGERLib">
+      <Guid>{CB5E6F9C-7C23-4BF4-8AE6-488CB9A3A99E}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="FalconEdiLib">
+      <Guid>{0826FFA0-FF34-11D3-B34B-009027434FFA}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>1</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="FalconEiblibIPLib">
+      <Guid>{EE530A01-D041-11D4-8B6E-0000E86A80B2}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="FalconInterfacesLib">
+      <Guid>{0826FFA7-FF34-11D3-B34B-009027434FFA}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="FalconInternalInterfacesLib">
+      <Guid>{D38837B6-677D-11D4-8B6B-0010A4C45079}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>1</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="FALCONPEI10EDILib">
+      <Guid>{7AA2E606-4684-11D4-8B26-0010A4C45079}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>1</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="FALCONTRANSPORTLAYERLib">
+      <Guid>{0826FFA8-FF34-11D3-B34B-009027434FFA}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>1</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="FalconUsbEdiLib">
+      <Guid>{76B461D8-19FC-487F-BBF1-CB91E77FF414}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>1</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="POWERMANAGERLib">
+      <Guid>{27F6DCE5-0011-11D4-AF16-00105AA2DD97}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

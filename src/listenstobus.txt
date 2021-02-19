@@ -1,0 +1,3 @@
+If (e_Open = EIBA.Interop.Falcon.DeviceOpenError.DeviceOpenErrorNoError) Then
+AddHandler g.GroupDataIndicationWrite, AddressOf g_IndicationWriteHandler
+End If

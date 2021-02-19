@@ -1,0 +1,2 @@
+e_Write = g.Write(address, EIBA.Interop.Falcon.Priority.PriorityLow, 6, bits,
+data)

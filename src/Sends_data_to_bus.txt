@@ -1,0 +1,7 @@
+Public Sub g_IndicationWriteHandler(ByVal GroupAddress As Integer, ByVal
+RoutingCnt As Integer, ByVal Prio As EIBA.Interop.Falcon.Priority, ByVal data As
+Object)
+Dim adress As String
+adress = getAddress(CStr(Hex(GroupAddress)))
+RaiseEvent KNX_event(address, data)
+End Sub

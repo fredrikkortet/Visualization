@@ -1,0 +1,8 @@
+c = New EIBA.Interop.Falcon.ConnectionObject
+ClassCreatorObj = CreateObject("EibaClassCreator.ClassCreator.1")
+c = ClassCreatorObj.CreateInstanceLic("Falcon.ConnectionObject.1", 4, "",
+"E18Q22510200702GKO")
+c.Mode = EIBA.Interop.Falcon.ConnectionMode.ConnectionModeRemoteConnectionless
+e_Open = c.Open2(id_str, parameters)
+g = New EIBA.Interop.Falcon.GroupData
+g.Connection = c

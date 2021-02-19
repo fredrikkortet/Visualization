@@ -57,7 +57,7 @@ namespace Visualization
             this.Treeview.Location = new System.Drawing.Point(0, 31);
             this.Treeview.Margin = new System.Windows.Forms.Padding(4);
             this.Treeview.Name = "Treeview";
-            this.Treeview.Size = new System.Drawing.Size(755, 627);
+            this.Treeview.Size = new System.Drawing.Size(541, 627);
             this.Treeview.TabIndex = 2;
             this.Treeview.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.Treeview_NodeMouseDoubleClick);
             // 
@@ -66,13 +66,13 @@ namespace Visualization
             this.Textbox.Location = new System.Drawing.Point(0, 666);
             this.Textbox.Margin = new System.Windows.Forms.Padding(4);
             this.Textbox.Name = "Textbox";
-            this.Textbox.Size = new System.Drawing.Size(755, 224);
+            this.Textbox.Size = new System.Drawing.Size(541, 224);
             this.Textbox.TabIndex = 3;
             this.Textbox.Text = "";
             // 
             // addressPanel
             // 
-            this.addressPanel.Location = new System.Drawing.Point(763, 140);
+            this.addressPanel.Location = new System.Drawing.Point(549, 140);
             this.addressPanel.Margin = new System.Windows.Forms.Padding(4);
             this.addressPanel.Name = "addressPanel";
             this.addressPanel.Size = new System.Drawing.Size(173, 614);
@@ -80,7 +80,7 @@ namespace Visualization
             // 
             // ButtonCheck
             // 
-            this.ButtonCheck.Location = new System.Drawing.Point(1135, 762);
+            this.ButtonCheck.Location = new System.Drawing.Point(896, 762);
             this.ButtonCheck.Margin = new System.Windows.Forms.Padding(4);
             this.ButtonCheck.Name = "ButtonCheck";
             this.ButtonCheck.Size = new System.Drawing.Size(133, 62);
@@ -102,7 +102,7 @@ namespace Visualization
             // 
             this.addressLabel.AutoSize = true;
             this.addressLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addressLabel.Location = new System.Drawing.Point(767, 112);
+            this.addressLabel.Location = new System.Drawing.Point(549, 112);
             this.addressLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.addressLabel.Name = "addressLabel";
             this.addressLabel.Size = new System.Drawing.Size(80, 24);
@@ -198,10 +198,10 @@ namespace Visualization
             // 
             // infoPanel
             // 
-            this.infoPanel.Location = new System.Drawing.Point(944, 140);
+            this.infoPanel.Location = new System.Drawing.Point(730, 140);
             this.infoPanel.Margin = new System.Windows.Forms.Padding(4);
             this.infoPanel.Name = "infoPanel";
-            this.infoPanel.Size = new System.Drawing.Size(394, 614);
+            this.infoPanel.Size = new System.Drawing.Size(608, 614);
             this.infoPanel.TabIndex = 5;
             // 
             // valuePanel
@@ -216,7 +216,7 @@ namespace Visualization
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(944, 112);
+            this.label1.Location = new System.Drawing.Point(726, 112);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(102, 24);
