@@ -31,4 +31,9 @@ hs_err_pid*
 *.aux
 *.synctex.gz
 *.fls
-*.fdb.latexmk
+*.fdb_latexmk
+*.bbl
+*.blg
+*.run.xml
+*blx.bib
+*.toc
