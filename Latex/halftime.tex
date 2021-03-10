@@ -15,6 +15,8 @@
 \newpage
 \tableofcontents
 \newpage
+\section{Abstract}
+The use of technology in homes increases every day, and more electrical devices are used in a home. To check and control all the electrical devices in a home or an apartment takes time; that is why there is a massive need for applications to make every room's controlling process much easier and take a much shorter time. This project is about designing and implementing a visualization application for windows and .NET for managing and comparing input data with the actual data. This application is equipped with a KNX bus driver to communicate with hardware in a building. The practical part of the application is to take some raw data and then sort them in a specific way to minimize the time of controlling the process. of the KNX devices in a building.
 \section{Introduction}
 There is a tremendous need for a visualization system connected to the property system KNX. To operate and test a larger property is very time-consuming and the risk of missing a deviation is big, that is why there is a need for some kind of application to solve these issues and minimize the processing time. Tekniska Byrån have a project to implement an application that works on Windows and Dotnet. The application is going to be connected to KNX by a driver can be implemented in any high-level programming language that works with Dotnet.
 \subsection{Purpose}
@@ -29,41 +31,6 @@ The work will result in a visualization application that...
 \end{itemize}
 \section{Background}
 Tekniska Byrån is working with the KNX system and in this section, the background and a short introduction about Tekniska Byrån and KNX will be explained.
-\subsection{Existing Project}
-The KNX Ultimate is a where close application to the virtualization application. The KNX ultimate is written in Node red, making it more web-based oriented, but its use is less individual testing in KNX systems. This is the application that's closest to the goal of virtualization of KNX systems. 
-\subsection{Teknisk Byrån}
-Tekniska Byrån is a consultant in the electricity industry with a focus on innovative solutions and smart technology. The company currently has 3 employees and has been active since 2000.The employees work with advice, description and design of electrical installations and as far as possible with property automation and mainly KNX. Within KNX, they conduct design, commissioning, support, training and take care of office functions for interest association KNX Sweden. In addition to this, they have also programmed certain hardware and software against the system. Tekniska Byrån has premises in Vetlanda and Linköping and has over the years had several interns and supervised a degree project.\cite{tekAbout} 
-
-
-
-
-
-
-\subsubsection{Services}
-Tekniska Byrån is active in the following areas:
-\begin{itemize}
-    \item Electrical design: Activities in the field of electrical engineering include installation/construction. They install electricity in houses, apartments, schools, offices, and more. They also work in electrical design, construction, and documentation.\cite{tekelproj} 
-    \item Programming: Tekniska Byrån jobs have programming projects to be able to have 
-    smart functions in their property system. Tekniska Byrån performs smart property automation with programming for
- KNX/EIB(ETS), IHC-Smart House, Mod-bus, PLC(Programmable Logic Controller), 
- SCADA(Supervisory Control and Data Acquisition), OPC(Open Platform Communication),
- and the programming languages are HTML, ASP, PHP, VB, SQL.\cite{tekprog} 
-    \item Education: The technical agency has many completed education programs and also in real estate automation and CAD technology. Property automation training includes an introduction to intelligent properties, a complete certified education center for KNX and IHC-Smart House.\cite{tekut} 
-\end{itemize}
-
-
-\subsubsection{Products}
-Building Portal Suite creates a portal to the KNX system in the form of a simple PC application. In the Application, different functions can be handled depending on which component is installed.
-Products that Tekniska Byrån develops that are used for smart properties are the following:\cite{tekprod} 
-\begin{itemize}
-    \item Alarm: The alarm is a compact, easy-to-use, customizable and flexible program for Windows that displays and follows up alarms in the KNX system. The alarm takes care of 3 different alarm classes (A, B, and C) where class A has the highest priority and audio features are used to attract attention.\cite{tekalarm} 
-    \item Controller: The user can with the included interface configure their buttons and display the data. The Controller is easy to use and customizable at the same time. The states and values displayed are actual values loaded from the system. All fields are updated automatically. Programs for the controller are flexible and compact for windows desktop.\cite{tekcontroller} 
-    \item Logger: Logger collects measurement data from the KNX system. The data that the logger collects can be used for example debiting, analysis or visualization with the help of a diagram. All values are saved together with the date and time when they were read. The values can be easily exported to XML and imported into another application for example in Excel, for further processing.\cite{teklogger} 
-    \item Meter: Meter is a flexible program for PC that collects measurement data from energy meters in the KNX system. The purpose of collecting energy measurement data is that they can be used for further processes like debiting, analysis or visualization with the help of a diagram. To save the data in this program is the same process as in the logger program.\cite{tekmeter} 
-\end{itemize}
-
-
-
 \subsection{What is KNX?}
 KNX is known as the European Installation Bus (EIB). It is a building control communication system that uses information technology to connect devices such as sensors, actuators, controllers, operating terminals, and monitors. 
 KNX was found in May 1999 by the European installation bus association (EIBA), European home systems association (EHSA), and BatiBus club international (BCI) associations.\cite{KNXLegacy}\cite{Automation} \\
@@ -81,12 +48,12 @@ KNX provides the ideal introduction to the world of bus technology a lot of new 
 KNX's mission is to work with automated homes. KNX is working on automation technologies that the smart home market recognizes KNX association, But what is an automated home?\\
 The automated home is also known as a smart house. Automated homes incorporate common devices that control features of the home. In the beginning, the functionality of a smart home was to control environmental systems such as lighting and heating, but technology has been developed so that every electrical component within the house can be included in the system. By smart house means that all electrical devices work together and can modify by smartphones or by an application that is connected to a network. Devices communicate with each other by using the "busline". A busline is a cable that connects all the devices and enables inter-connectivity between devices in different rooms throughout the home. \cite{SETAG}\cite{Automation} \cite{TheAdaptiveHouse}
 \subsubsection{KNX Bus Devices}
-KNX devices can be classified into four main groups like in Figure \ref{fig:knx}\cite{Automation}: 
+KNX devices can be classified into four main groups like in Figure \ref{fig:knx}: 
 \begin{itemize}
     \item System components(Power supply units, accumulators, USB interfaces, and more).
     \item Sensors(Switch sensors, motion detectors, and glass break detectors).
     \item Actuators(Switch and blinds).
-    \item Logical components and control panel. 
+    \item Logical components and control panel\cite{Automation}. 
 \end{itemize}  
 \begin{figure}[h!]
     \centering
@@ -101,7 +68,7 @@ To connect these devices the following communication media are available for a K
     in the electromagnetic environment.\cite{fdaEMC}
     \item KNX power line(KNX PL): Using the electricity cables in a building as a communication medium. 230V main electricity will provide the power required by bus devices.
     \item KNX radio frequency(KNX RF): Communication with the help of radio signals.
-    \item KNX Ethernet(KNX IP): Communication with the help of internet protocols.
+    \item KNX Ethernet(KNX IP): Communication with the help of internet protocols\cite{KNXBasic}.
 \end{itemize}
 \newpage
 \subsubsection{KNX Telegram}
@@ -137,7 +104,46 @@ KNX bus devices exchanges data between each other by telegram. A telegram consis
         \item KNX IP body: this field contains telegrams payload. \cite{KNXBasic}
     \end{itemize}
 \end{enumerate}
+\subsection{Teknisk Byrån}
+Tekniska Byrån is a consultant in the electricity industry with a focus on innovative solutions and smart technology. The company currently has 3 employees and has been active since 2000.The employees work with advice, description and design of electrical installations and as far as possible with property automation and mainly KNX. Within KNX, they conduct design, commissioning, support, training and take care of office functions for interest association KNX Sweden. In addition to this, they have also programmed certain hardware and software against the system. Tekniska Byrån has premises in Vetlanda and Linköping and has over the years had several interns and supervised a degree project.\cite{tekAbout} 
+\subsubsection{Services}
+Tekniska Byrån is active in the following areas:
+\begin{itemize}
+    \item Electrical design: Activities in the field of electrical engineering include installation/construction. They install electricity in houses, apartments, schools, offices, and more. They also work in electrical design, construction, and documentation.\cite{tekelproj} 
+    \item Programming: Tekniska Byrån jobs have programming projects to be able to have 
+    smart functions in their property system. Tekniska Byrån performs smart property automation with programming for
+ KNX/EIB(ETS), IHC-Smart House, Mod-bus, PLC(Programmable Logic Controller), 
+ SCADA(Supervisory Control and Data Acquisition), OPC(Open Platform Communication),
+ and the programming languages are HTML, ASP, PHP, VB, SQL.\cite{tekprog} 
+    \item Education: The technical agency has many completed education programs and also in real estate automation and CAD technology. Property automation training includes an introduction to intelligent properties, a complete certified education center for KNX and IHC-Smart House.\cite{tekut} 
+\end{itemize}
+
+
+\subsubsection{Products}
+Building Portal Suite creates a portal to the KNX system in the form of a simple PC application. In the Application, different functions can be handled depending on which component is installed.
+Products that Tekniska Byrån develops that are used for smart properties are the following:\cite{tekprod} 
+\begin{itemize}
+    \item Alarm: The alarm is a compact, easy-to-use, customizable and flexible program for Windows that displays and follows up alarms in the KNX system. The alarm takes care of 3 different alarm classes (A, B, and C) where class A has the highest priority and audio features are used to attract attention.\cite{tekalarm} 
+    \item Controller: The user can with the included interface configure their buttons and display the data. The Controller is easy to use and customizable at the same time. The states and values displayed are actual values loaded from the system. All fields are updated automatically. Programs for the controller are flexible and compact for windows desktop.\cite{tekcontroller} 
+    \item Logger: Logger collects measurement data from the KNX system. The data that the logger collects can be used for example debiting, analysis or visualization with the help of a diagram. All values are saved together with the date and time when they were read. The values can be easily exported to XML and imported into another application for example in Excel, for further processing.\cite{teklogger} 
+    \item Meter: Meter is a flexible program for PC that collects measurement data from energy meters in the KNX system. The purpose of collecting energy measurement data is that they can be used for further processes like debiting, analysis or visualization with the help of a diagram. To save the data in this program is the same process as in the logger program.\cite{tekmeter} 
+\end{itemize}
+\subsection{Related Project}
+The KNX Ultimate is a very close application to the visualization application. The KNX ultimate is written in Node red, making it more web-based oriented this application is also working with CSV file and uses error detector mechanism, but its use is less individual testing in KNX systems. This is the application that's closest to the goal of visualization of KNX systems.\cite{ultimate} 
+
+
+
 \section{Method}
+\subsection{Language and Tools}
+The application will be in C\# to be able to connect the application with the .NET driver. It just needs to be in Windows then the company only uses Windows. Another advantage of C\# is that the graphical user interface (GUI) part is "built-in". It is possible to use other languages also e.g C or C++ and these have advantages that have a fast execution time and is lightweight language. C and C++ are cross-platform programs through C \& C++ have separate GUI libraries therefore it is suitable to use C\# to program the application. Visual studio 2019 and C\# will be used to program the application because it is easier to launch the code and has good tools to debug and integrate with the DLL file.\cite{CPROG}
+\subsection{Person and Finance}
+Sundas Munir will be our supervisor by helping to write the report and discuss problems. Marcus Karlsson is our contact person 
+at the Tekniska Byrån who will give us more information and resources. The project process has no cost because the company will fix 
+some hardware to test the application in the end. The project will be done at the university or home.
+\subsection{Materiel}
+Drivers are available from the company that will be connected to the KNX system that allows the application to communicate with KNX compatible products that will be tested. The company has created documentation of how the driver will communicate with the code. Hardware will come from the Tekniska Byrån and it will be part of the test phase. When we test the application, we use some files that we have received from the company. 
+\subsection{Implementation}
+The GUI has three main sections that are built to interact with the user efficiently. The user needs to import a CSV file with his building from the KNX program they need to use. The file gets arranged into a linked list that will represent an expandable tree structure. Under the Treeview, all the feedback comes to display to the user from the check button or something wrong. To the right in the application are the leading window where the user changes values on each line, clicks the button, and sees the log window's output if something was wrong. The CSV file is sorted from the beginning, so it's not needed to sort the file in any way. The linked list was chosen because of its easy to increase/decrease factor. The cons for the linked list are that it takes more memory because it holds the addresses to the previous node and the next node. Seen in Figure\ref{fig:application}
 \subsection{Tests}
 The test will ensure that the application is working like intended and follow the requirements from the company. 
 \subsubsection{Driver test}
@@ -175,22 +181,13 @@ Condition 3: person with coupon = 30\%\\
 Every column will be a test to test.
 
 The state transition technique ensures that every state does what's it intended to achieve. The goal here is to visualize how the system should work and test every outcome that needs to try.
-
-\subsection{Language and Tools}
-The application will be in C\# to be able to connect the application with the .NET driver. It just needs to be in Windows then the company only uses Windows. Another advantage of C\# is that the graphical user interface (GUI) part is "built-in". It is possible to use other languages also e.g C or C++ and these have advantages that have a fast execution time and is lightweight language. C and C++ are cross-platform programs through C \& C++ have separate GUI libraries therefore it is suitable to use C\# to program the application. Visual studio 2019 and C\# will be used to program the application because it is easier to launch the code and has good tools to debug and integrate with the DLL file.\cite{CPROG}
-\subsection{Person and Finance}
-Sundas Munir will be our supervisor by helping to write the report and discuss problems. Marcus Karlsson is our contact person 
-at the Tekniska Byrån who will give us more information and resources. The project process has no cost because the company will fix 
-some hardware to test the application in the end. The project will be done at the university or home.
-\subsection{Materiel}
-Drivers are available from the company that will be connected to the KNX system that allows the application to communicate with KNX compatible products that will be tested. The company has created documentation of how the driver will communicate with the code. Hardware will come from the Tekniska Byrån and it will be part of the test phase. When we test the application, we use some files that we have received from the company. 
 \section{Result}
-The GUI for the program and make sure the CSV file read correctly. The GUI has three main parts that are built on it have the whole project there. The entire building is in one tree structure that is easy to navigate and see its design. Then the log window where all the feedback is coming back and visible for the user. Then the primary part where all the changes come in there. The user can test the rum with easy controls to change what they want to check. The structure of taking care of the CSV files input and sorting out all the objects into the linked list. Having an excellent design to list everything linked list was chosen doesn't need to care about sorting, or we don't need to reorder the list because everything comes in sorted. A linked list makes it easy to increase/decrease nodes (dynamic array) can use multiple elements in one node. The cons are that it takes more memory because it holds the addresses to the previous node and the next node.
+The Result of the project so far is that the graphical part of the application is almost complete. The purpose of the application so far is to import a CSV file from the operating system and get it as a tree view. The application has three main parts that are built on it have the whole project there. The imported file structure is in one tree arrangement because it is easy to navigate and see its design. The application's objective is to sort data into different sections such as primary, address, information, and value parts. The user can check whether the imported data is correct compared to the actual data from the hardware. A linked list is used to store data because it makes it easy to increase/decrease nodes (dynamic array) that can use multiple elements in one node. The Application is presented in figure \ref{fig:application}
 \begin{figure}[h!]
     \centering
     \includegraphics[width=\textwidth]{bild1.jpg}
     \caption{Application}
-    \label{fig:my_label}
+    \label{fig:application}
 \end{figure}
 \newpage
 \section{Time plans}
