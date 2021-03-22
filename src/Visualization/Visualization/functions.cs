@@ -38,39 +38,50 @@ namespace Visualization
         /// </summary>
         /// <param name="underscore"></param> it returns a string that has nothing in it.
         /// <returns></returns>
-        public string[] Split_room(string underscore, string address)
+        public void Split_room(string underscore, string address)
         {
-            string[] temp = underscore.Split('_');
+            using (StringReader linespliter = new StringReader(underscore))
+            {
+                char[] c = new char[3]; 
+                linespliter.Read(c, 0, 2);
+                if (c[1] == '-')
+                {
+                    return;
+                }
+            }
+            
             if (linkedRooms.Count > 0)
             {
                 if (check)
                 {
                     currentNode = linkedRooms.First;
-                    check = false;
+                    check = false; 
                 }
                 do
                 {
-                    if (currentNode.Value.CompareRoom(temp[0], address))
+                    if (currentNode.Value.CompareRoom(address))
                     {
-                        currentNode.Value.addItem(temp[1], address);
-                        return null;
+                        currentNode.Value.addItem(underscore,address);
+                        return;
                     }
                     if (currentNode.Next == null)
                     {
-                        Room addroom = new Room(temp[0], temp[1], address);
+                        Room addroom = new Room(underscore, address);
                         linkedRooms.AddLast(addroom);
-                        return temp;
+                        return ;
                     }
                     currentNode = currentNode.Next;
+
                 } while (currentNode != null);
             }
             else
             {
-                Room addroom = new Room(temp[0], temp[1], address);
+                Room addroom = new Room(underscore, address);
                 linkedRooms.AddLast(addroom);
             }
 
-            return temp;
+
+           
         }
 
 
@@ -84,42 +95,36 @@ namespace Visualization
 
                 string[] temp = line.Split(';');
                 temp = SkipChar(temp);
-                if (temp[0] != " ")
+
+                if(temp[0] != " ")
                 {
                     TreeNode mainNode = new TreeNode();
                     mainNode.Name = "mainNode";
-                    mainNode.Text = temp[0];
+                    mainNode.Tag = temp[3]; // address
+                    mainNode.Text = temp[0]; // info name
                     treeview.Nodes.Add(mainNode);
                     nodecount++;
-
                 }
-                if (temp[1] != " ")
+                if(temp[1] != " ")
                 {
                     TreeNode node = new TreeNode();
-                    node.Name = "Node";
+                    node.Name = "node";
+                    node.Tag = temp[3];
                     node.Text = temp[1];
                     treeview.Nodes[nodecount].Nodes.Add(node);
-                    check = true; // it is  true until next plan is coming  
-
+                    check = true;
                 }
-                if (temp[2] != " ")
+                if(temp[2] != " ")
                 {
-                    string[] splitUnderscore = Split_room(temp[2], temp[3]);
-                    if (splitUnderscore != null)
-                    {
-                        TreeNode childnode = new TreeNode();
-                        childnode.Name = "childnode";
-                        childnode.Tag = temp[3];
-                        childnode.Text = splitUnderscore[0];
-                        treeview.Nodes[nodecount].Nodes[0].Nodes.Add(childnode);
-                    }
-                }
-
+                    Split_room(temp[2], temp[3]);
+                } 
                 line = read.ReadLine();
             }
             treeview.Text = read.ReadToEnd();
             read.Dispose();
         }
+       
     }
+   
 }
 

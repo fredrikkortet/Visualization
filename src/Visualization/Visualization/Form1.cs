@@ -18,13 +18,17 @@ namespace Visualization
 
         private void StripOpen_Click(object sender, EventArgs e)
         {
+
             OpenFileDialog openfile = new OpenFileDialog();
             openfile.Filter = "csv files only|*.csv";
             if (openfile.ShowDialog().Equals(DialogResult.OK))
             {
+                linkedRooms.Clear();
+                Treeview.Nodes.Clear();
                 StreamReader read = new StreamReader(File.OpenRead(openfile.FileName));
                 function.makeTree(read, Treeview);
             }
+
         }
         private void StripSave_Click(object sender, EventArgs e)
         {
@@ -60,7 +64,7 @@ namespace Visualization
                 Room activeRoom = null;
                 foreach (Room str in linkedRooms)
                 {
-                    if (str.CompareRoom(e.Node.Text, (string)e.Node.Tag))
+                    if (str.CompareRoom((string)e.Node.Tag))
                     {
                         activeRoom = str;
                         break;
@@ -98,5 +102,7 @@ namespace Visualization
             }
 
         }
+
+       
     }
 }
