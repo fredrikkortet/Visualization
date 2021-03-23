@@ -49,7 +49,9 @@ namespace Visualization
             this.infoPanel = new System.Windows.Forms.Panel();
             this.valuePanel = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // Treeview
@@ -70,14 +72,15 @@ namespace Visualization
             // 
             // addressPanel
             // 
-            this.addressPanel.Location = new System.Drawing.Point(412, 114);
+            this.addressPanel.AutoSize = true;
+            this.addressPanel.Location = new System.Drawing.Point(0, 0);
             this.addressPanel.Name = "addressPanel";
-            this.addressPanel.Size = new System.Drawing.Size(130, 499);
+            this.addressPanel.Size = new System.Drawing.Size(133, 493);
             this.addressPanel.TabIndex = 4;
             // 
             // ButtonCheck
             // 
-            this.ButtonCheck.Location = new System.Drawing.Point(672, 619);
+            this.ButtonCheck.Location = new System.Drawing.Point(753, 645);
             this.ButtonCheck.Name = "ButtonCheck";
             this.ButtonCheck.Size = new System.Drawing.Size(100, 50);
             this.ButtonCheck.TabIndex = 5;
@@ -191,52 +194,67 @@ namespace Visualization
             // 
             // infoPanel
             // 
-            this.infoPanel.Location = new System.Drawing.Point(548, 114);
+            this.infoPanel.AutoSize = true;
+            this.infoPanel.Location = new System.Drawing.Point(139, 0);
             this.infoPanel.Name = "infoPanel";
-            this.infoPanel.Size = new System.Drawing.Size(456, 499);
+            this.infoPanel.Size = new System.Drawing.Size(456, 493);
             this.infoPanel.TabIndex = 5;
             // 
             // valuePanel
             // 
-            this.valuePanel.Location = new System.Drawing.Point(1010, 114);
+            this.valuePanel.AutoSize = true;
+            this.valuePanel.Location = new System.Drawing.Point(601, 0);
             this.valuePanel.Name = "valuePanel";
-            this.valuePanel.Size = new System.Drawing.Size(167, 499);
+            this.valuePanel.Size = new System.Drawing.Size(161, 493);
             this.valuePanel.TabIndex = 5;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(544, 91);
+            this.label1.Location = new System.Drawing.Point(551, 91);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(82, 18);
             this.label1.TabIndex = 10;
             this.label1.Text = "Information";
+            // 
+            // panel1
+            // 
+            this.panel1.AutoScroll = true;
+            this.panel1.Controls.Add(this.valuePanel);
+            this.panel1.Controls.Add(this.addressPanel);
+            this.panel1.Controls.Add(this.infoPanel);
+            this.panel1.Location = new System.Drawing.Point(415, 112);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(789, 493);
+            this.panel1.TabIndex = 11;
             // 
             // Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(147)))), ((int)(((byte)(147)))));
-            this.ClientSize = new System.Drawing.Size(1204, 734);
+            this.ClientSize = new System.Drawing.Size(1204, 727);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.infoPanel);
-            this.Controls.Add(this.valuePanel);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.ValueLabel);
             this.Controls.Add(this.addressLabel);
             this.Controls.Add(this.pathLabel);
             this.Controls.Add(this.ButtonCheck);
-            this.Controls.Add(this.addressPanel);
             this.Controls.Add(this.Textbox);
             this.Controls.Add(this.Treeview);
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximumSize = new System.Drawing.Size(1220, 766);
+            this.MinimumSize = new System.Drawing.Size(1220, 766);
             this.Name = "Window";
             this.Text = "Visualization";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -262,6 +280,7 @@ namespace Visualization
         private System.Windows.Forms.Panel infoPanel;
         private System.Windows.Forms.Panel valuePanel;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 
