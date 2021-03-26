@@ -10,6 +10,7 @@ namespace Visualization
     {
         static LinkedList<Room> linkedRooms = new LinkedList<Room>();
         functions function = new functions(linkedRooms);
+        Alternative valueItems = new Alternative();
 
         public Window()
         {
@@ -25,7 +26,8 @@ namespace Visualization
             {
                 linkedRooms.Clear();
                 Treeview.Nodes.Clear();
-                StreamReader read = new StreamReader(File.OpenRead(openfile.FileName));
+                StreamReader read = new StreamReader(File.OpenRead(openfile.FileName),System.Text.Encoding.GetEncoding(1252),true);
+                
                 function.makeTree(read, Treeview);
             }
 
@@ -56,7 +58,7 @@ namespace Visualization
 
             if (e.Node.Nodes.Count == 0)
             {
-
+                object[] test = {1,2,3 };
                 addressPanel.Controls.Clear();
                 infoPanel.Controls.Clear();
                 valuePanel.Controls.Clear();
@@ -83,6 +85,11 @@ namespace Visualization
                     for (int i = 0; i < activeRoom.getCount() - 1; i++)
                     {
                         ComboBox value = new ComboBox();
+                        string[] temp = roomItem.Value.Split('>');
+                        object[] temp2 = valueItems.Value(temp[1]);
+                        if (temp2 != null) {
+                            value.Items.AddRange(temp2);
+                        }
                         value.Location = new Point(0, i * 25);
                         Label firstlabel = new Label();
                         firstlabel.Location = new Point(0, i * 25);
