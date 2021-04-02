@@ -4,6 +4,7 @@ using Eiba.Interop.FalconInterfaces;
 using FalconClientComponentsLib;
 using EibaClassCreatorLib;
 
+
 namespace Visualization
 {
 
@@ -17,12 +18,12 @@ namespace Visualization
         private IConnectionCustom2 c;
         string id_str = "";//inside get connection
         string parameters; // inside get connection
+        public Boolean checker = false;
 
-        private string getConnection_Int() 
+        public string getConnection_Int() 
         {
             try
             {
-                
                 ConnectionManager cm = new ConnectionManager();
                 FalconConnection con;
                 // Skapar Connection Manager
@@ -41,7 +42,7 @@ namespace Visualization
                         parameters = parameters + Convert.ToChar(con.wszParameters[i]);
 
                     }
-                    id_str = "{" + gu_id.ToString() + " }";
+                    id_str =gu_id.ToString();
                 }
                 return id_str + "|" + parameters;
             }
@@ -51,27 +52,39 @@ namespace Visualization
            
         }
 
-        private void connect_to_buss()
+        public void connect_to_buss()
         {
+            disconnect();
             ClassCreatorObj = new ClassCreator();
             c = ClassCreatorObj.CreateInstanceLic("Falcon.ConnectionObject.1", (tagCLSCTX)4, "",
 "E18Q22510200702GKO");
+
             c.Mode = ConnectionMode.ConnectionModeRemoteConnectionless;
             e_open = c.Open2(Guid.Parse(id_str), parameters);
 
             g = new GroupDataClient();
             g.Connection = (FalconInterfacesLib.IConnection)c;
+            checker = true; 
         }
-        private void listning()
+        public void listning()
         {
             if(e_open == DeviceOpenError.DeviceOpenErrorNoError)
             {
-                //g.GroupDataConfirmationWrite;
+               //g.GroupDataConfirmationWrite;
             }
         }
-        private void senddata()
+        public void senddata()
         {
             e_write = (DeviceWriteError)g.Write(2 / 2 / 1, (FalconInterfacesLib.Priority)Priority.PriorityLow, 6, true, 21);
+        }
+
+        public void disconnect()
+        {
+            if (checker) { 
+                c = ClassCreatorObj.CreateInstanceLic("Falcon.ConnectionObject.1", (tagCLSCTX)4, "", "E18Q22510200702GKO");
+                c.Mode = ConnectionMode.ConnectionModeClosed;
+            }
+            checker = true;
         }
     }
 

@@ -81,35 +81,56 @@ namespace Visualization
                 {
                     LinkedListNode<string> roomItem = activeRoom.getRoomItem().First;
                     LinkedListNode<string> roomAddress = activeRoom.getAddress().First;
-
+                    int count = 0;
                     for (int i = 0; i < activeRoom.getCount() - 1; i++)
                     {
                         ComboBox value = new ComboBox();
                         string[] temp = roomItem.Value.Split('>');
                         object[] temp2 = valueItems.Value(temp[1]);
-                        if (temp2 != null) {
+                        if (temp2 != null)
+                        {
                             value.Items.AddRange(temp2);
-                        }
-                        value.Location = new Point(0, i * 25);
-                        Label firstlabel = new Label();
-                        firstlabel.Location = new Point(0, i * 25);
-                        firstlabel.Text = roomAddress.Value;
 
-                        Label secondlabel = new Label();
-                        secondlabel.Width = 450;
-                        secondlabel.Location = new Point(0, i * 25);
-                        secondlabel.Text = roomItem.Value;
-                        addressPanel.Controls.Add(firstlabel);
-                        infoPanel.Controls.Add(secondlabel);
-                        valuePanel.Controls.Add(value);
+                            value.Location = new Point(0, count * 25);
+                            Label firstlabel = new Label();
+                            firstlabel.Location = new Point(0, count * 25);
+                            firstlabel.Text = roomAddress.Value;
+
+                            Label secondlabel = new Label();
+                            secondlabel.Width = 450;
+                            secondlabel.Location = new Point(0, count * 25);
+                            secondlabel.Text = roomItem.Value;
+                            addressPanel.Controls.Add(firstlabel);
+                            infoPanel.Controls.Add(secondlabel);
+                            valuePanel.Controls.Add(value);
+                            count++;
+                        }
                         roomItem = roomItem.Next;
                         roomAddress = roomAddress.Next;
+
                     }
                 }
             }
 
         }
 
-       
+        private void connection_Click(object sender, EventArgs e)
+        {
+            string message = "Connected to the driver!";
+            string antimessage = "Was not able to connect to the driver!";
+            Falcon connect = new Falcon();
+            if(!connect.checker)
+            {
+            connect.getConnection_Int();
+            connect.connect_to_buss();
+            Textbox.Text += " " + message;
+            }
+            else
+            {
+                Textbox.Text += antimessage; 
+            }
+            
+           
+        }
     }
 }
