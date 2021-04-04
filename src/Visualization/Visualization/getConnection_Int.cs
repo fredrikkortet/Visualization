@@ -54,16 +54,16 @@ namespace Visualization
 
         public void connect_to_buss()
         {
-            disconnect();
+            
+            //disconnect();
             ClassCreatorObj = new ClassCreator();
-            c = ClassCreatorObj.CreateInstanceLic("Falcon.ConnectionObject.1", (tagCLSCTX)4, "",
-"E18Q22510200702GKO");
-
+            c = ClassCreatorObj.CreateInstanceLic("Falcon.ConnectionObject.1", (tagCLSCTX)4, "", 
+                "E18Q22510200702GKO");
             c.Mode = ConnectionMode.ConnectionModeRemoteConnectionless;
             e_open = c.Open2(Guid.Parse(id_str), parameters);
-
             g = new GroupDataClient();
             g.Connection = (FalconInterfacesLib.IConnection)c;
+
             checker = true; 
         }
         public void listning()
@@ -75,16 +75,25 @@ namespace Visualization
         }
         public void senddata()
         {
-            e_write = (DeviceWriteError)g.Write(2 / 2 / 1, (FalconInterfacesLib.Priority)Priority.PriorityLow, 6, true, 21);
+
+            if (checker)
+            {
+                e_write = (DeviceWriteError)g.Write("10/0/11", (FalconInterfacesLib.Priority)Priority.PriorityLow, 6, true, 1);
+                checker =false;
+            }else
+            {
+                e_write = (DeviceWriteError)g.Write("10/0/11", (FalconInterfacesLib.Priority)Priority.PriorityLow, 6, true, 0);
+                checker= true;
+            }
+
         }
 
         public void disconnect()
         {
-            if (checker) { 
-                c = ClassCreatorObj.CreateInstanceLic("Falcon.ConnectionObject.1", (tagCLSCTX)4, "", "E18Q22510200702GKO");
-                c.Mode = ConnectionMode.ConnectionModeClosed;
-            }
-            checker = true;
+            
+               c.Mode = ConnectionMode.ConnectionModeClosed;
+               checker = false;
+         
         }
     }
 

@@ -11,6 +11,7 @@ namespace Visualization
         static LinkedList<Room> linkedRooms = new LinkedList<Room>();
         functions function = new functions(linkedRooms);
         Alternative valueItems = new Alternative();
+        Falcon connect = new Falcon();
 
         public Window()
         {
@@ -118,19 +119,34 @@ namespace Visualization
         {
             string message = "Connected to the driver!";
             string antimessage = "Was not able to connect to the driver!";
-            Falcon connect = new Falcon();
+
             if(!connect.checker)
             {
             connect.getConnection_Int();
             connect.connect_to_buss();
+            Textbox.ForeColor = Color.Green;
+            
             Textbox.Text += " " + message;
+
             }
             else
             {
+                Textbox.ForeColor = Color.Red;
                 Textbox.Text += antimessage; 
             }
             
            
+        }
+
+        private void ButtonCheck_Click(object sender, EventArgs e)
+        {
+            
+            connect.senddata();
+        }
+
+        private void cancelbutton_Click(object sender, EventArgs e)
+        {
+            connect.disconnect();
         }
     }
 }

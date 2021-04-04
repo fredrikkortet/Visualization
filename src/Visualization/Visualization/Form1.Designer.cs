@@ -51,6 +51,7 @@ namespace Visualization
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.connection = new System.Windows.Forms.Button();
+            this.cancelbutton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -81,12 +82,14 @@ namespace Visualization
             // 
             // ButtonCheck
             // 
+            this.ButtonCheck.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.ButtonCheck.Location = new System.Drawing.Point(801, 645);
             this.ButtonCheck.Name = "ButtonCheck";
             this.ButtonCheck.Size = new System.Drawing.Size(100, 50);
             this.ButtonCheck.TabIndex = 5;
             this.ButtonCheck.Text = "Check";
             this.ButtonCheck.UseVisualStyleBackColor = true;
+            this.ButtonCheck.Click += new System.EventHandler(this.ButtonCheck_Click);
             // 
             // pathLabel
             // 
@@ -232,6 +235,7 @@ namespace Visualization
             // 
             // connection
             // 
+            this.connection.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.connection.Location = new System.Drawing.Point(637, 645);
             this.connection.Name = "connection";
             this.connection.Size = new System.Drawing.Size(100, 50);
@@ -240,12 +244,24 @@ namespace Visualization
             this.connection.UseVisualStyleBackColor = true;
             this.connection.Click += new System.EventHandler(this.connection_Click);
             // 
+            // cancelbutton
+            // 
+            this.cancelbutton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.cancelbutton.Location = new System.Drawing.Point(950, 645);
+            this.cancelbutton.Name = "cancelbutton";
+            this.cancelbutton.Size = new System.Drawing.Size(100, 50);
+            this.cancelbutton.TabIndex = 13;
+            this.cancelbutton.Text = "Disconnect";
+            this.cancelbutton.UseVisualStyleBackColor = true;
+            this.cancelbutton.Click += new System.EventHandler(this.cancelbutton_Click);
+            // 
             // Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(147)))), ((int)(((byte)(147)))));
             this.ClientSize = new System.Drawing.Size(1204, 727);
+            this.Controls.Add(this.cancelbutton);
             this.Controls.Add(this.connection);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
@@ -294,6 +310,7 @@ namespace Visualization
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button connection;
+        private System.Windows.Forms.Button cancelbutton;
     }
 }
 
