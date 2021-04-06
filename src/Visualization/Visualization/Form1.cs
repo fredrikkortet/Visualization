@@ -126,13 +126,14 @@ namespace Visualization
             connect.connect_to_buss();
             Textbox.ForeColor = Color.Green;
             
-            Textbox.Text += " " + message;
+            Textbox.Text = " " + message;
 
             }
             else
             {
+                
                 Textbox.ForeColor = Color.Red;
-                Textbox.Text += antimessage; 
+                Textbox.Text = antimessage; 
             }
             
            
@@ -140,13 +141,20 @@ namespace Visualization
 
         private void ButtonCheck_Click(object sender, EventArgs e)
         {
-            
+           
             connect.senddata();
+            Textbox.ForeColor = Color.Black;
+            Textbox.Text = "Has been checked";
         }
 
         private void cancelbutton_Click(object sender, EventArgs e)
         {
+
             connect.disconnect();
+           
+            Textbox.ForeColor = Color.Red;
+            Textbox.Text = "Disconnected";
+           
         }
     }
 }

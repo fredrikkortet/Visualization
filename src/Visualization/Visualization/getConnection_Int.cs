@@ -79,20 +79,24 @@ namespace Visualization
             if (checker)
             {
                 e_write = (DeviceWriteError)g.Write("10/0/11", (FalconInterfacesLib.Priority)Priority.PriorityLow, 6, true, 1);
+                e_write = (DeviceWriteError)g.Write("10/0/14", (FalconInterfacesLib.Priority)Priority.PriorityLow, 6, false, 0x30);
                 checker =false;
             }else
             {
+              
                 e_write = (DeviceWriteError)g.Write("10/0/11", (FalconInterfacesLib.Priority)Priority.PriorityLow, 6, true, 0);
-                checker= true;
+                checker = true;
             }
 
         }
 
         public void disconnect()
         {
-            
-               c.Mode = ConnectionMode.ConnectionModeClosed;
-               checker = false;
+               
+            c.Mode = ConnectionMode.ConnectionModeClosed;
+            c = null;
+            g = null;
+            checker = false;
          
         }
     }
