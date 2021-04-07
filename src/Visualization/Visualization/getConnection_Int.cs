@@ -73,21 +73,9 @@ namespace Visualization
                //g.GroupDataConfirmationWrite;
             }
         }
-        public void senddata()
+        public void senddata(string address, Boolean status , int data)
         {
-
-            if (checker)
-            {
-                e_write = (DeviceWriteError)g.Write("10/0/11", (FalconInterfacesLib.Priority)Priority.PriorityLow, 6, true, 1);
-                e_write = (DeviceWriteError)g.Write("10/0/14", (FalconInterfacesLib.Priority)Priority.PriorityLow, 6, false, 0x30);
-                checker =false;
-            }else
-            {
-              
-                e_write = (DeviceWriteError)g.Write("10/0/11", (FalconInterfacesLib.Priority)Priority.PriorityLow, 6, true, 0);
-                checker = true;
-            }
-
+                e_write = (DeviceWriteError)g.Write(address, (FalconInterfacesLib.Priority)Priority.PriorityLow, 6, status,(byte) data);       
         }
 
         public void disconnect()

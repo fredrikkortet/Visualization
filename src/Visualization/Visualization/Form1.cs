@@ -12,6 +12,7 @@ namespace Visualization
         functions function = new functions(linkedRooms);
         Alternative valueItems = new Alternative();
         Falcon connect = new Falcon();
+        ComboBox value;
 
         public Window()
         {
@@ -80,34 +81,35 @@ namespace Visualization
                 }
                 else
                 {
-                    LinkedListNode<string> roomItem = activeRoom.getRoomItem().First;
-                    LinkedListNode<string> roomAddress = activeRoom.getAddress().First;
+                    LinkedListNode<controller> roomItem = activeRoom.getControl().First;
+                    
                     int count = 0;
                     for (int i = 0; i < activeRoom.getCount() - 1; i++)
                     {
-                        ComboBox value = new ComboBox();
-                        string[] temp = roomItem.Value.Split('>');
+                        value = new ComboBox();
+                        string[] temp = roomItem.Value.getRoomitem().Split('>');
                         object[] temp2 = valueItems.Value(temp[1]);
                         if (temp2 != null)
                         {
+                            
                             value.Items.AddRange(temp2);
-
+                            roomItem.Value.setComboBox(value);
                             value.Location = new Point(0, count * 25);
                             Label firstlabel = new Label();
                             firstlabel.Location = new Point(0, count * 25);
-                            firstlabel.Text = roomAddress.Value;
+                            firstlabel.Text = roomItem.Value.getAddress();
 
                             Label secondlabel = new Label();
                             secondlabel.Width = 450;
                             secondlabel.Location = new Point(0, count * 25);
-                            secondlabel.Text = roomItem.Value;
+                            secondlabel.Text = roomItem.Value.getRoomitem();
                             addressPanel.Controls.Add(firstlabel);
                             infoPanel.Controls.Add(secondlabel);
                             valuePanel.Controls.Add(value);
                             count++;
                         }
                         roomItem = roomItem.Next;
-                        roomAddress = roomAddress.Next;
+                        
 
                     }
                 }
@@ -142,9 +144,13 @@ namespace Visualization
         private void ButtonCheck_Click(object sender, EventArgs e)
         {
            
-            connect.senddata();
-            Textbox.ForeColor = Color.Black;
-            Textbox.Text = "Has been checked";
+            if(value.Text != null)
+            {
+                connect.senddata(value.Text, true,1);
+                Textbox.ForeColor = Color.Black;
+                Textbox.Text = "Has been checked";
+            }
+           
         }
 
         private void cancelbutton_Click(object sender, EventArgs e)
