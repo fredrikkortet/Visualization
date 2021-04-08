@@ -3,7 +3,7 @@ using Eiba.Interop.FalconConnectionManager;
 using Eiba.Interop.FalconInterfaces;
 using FalconClientComponentsLib;
 using EibaClassCreatorLib;
-
+using System.Windows.Forms;
 
 namespace Visualization
 {
@@ -75,7 +75,17 @@ namespace Visualization
         }
         public void senddata(string address, Boolean status , int data)
         {
-                e_write = (DeviceWriteError)g.Write(address, (FalconInterfacesLib.Priority)Priority.PriorityLow, 6, status,(byte) data);       
+          
+            if (data != 0)
+            {
+                e_write = (DeviceWriteError)g.Write(address, (FalconInterfacesLib.Priority)Priority.PriorityLow, 6, status, (byte)data);
+            }
+            else
+            {
+                DialogResult  warningbox = MessageBox.Show("No data has been inserted"," " , MessageBoxButtons.OK,MessageBoxIcon.Error);
+
+            }
+                      
         }
 
         public void disconnect()

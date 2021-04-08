@@ -12,7 +12,9 @@ namespace Visualization
         functions function = new functions(linkedRooms);
         Alternative valueItems = new Alternative();
         Falcon connect = new Falcon();
-        ComboBox value;
+        Room activeRoom;
+
+
 
         public Window()
         {
@@ -65,7 +67,7 @@ namespace Visualization
                 infoPanel.Controls.Clear();
                 valuePanel.Controls.Clear();
                 pathLabel.Text = e.Node.FullPath;
-                Room activeRoom = null;
+                activeRoom = null;
                 foreach (Room str in linkedRooms)
                 {
                     if (str.CompareRoom((string)e.Node.Tag))
@@ -82,16 +84,17 @@ namespace Visualization
                 else
                 {
                     LinkedListNode<controller> roomItem = activeRoom.getControl().First;
-                    
+                    ComboBox value;
                     int count = 0;
                     for (int i = 0; i < activeRoom.getCount() - 1; i++)
                     {
                         value = new ComboBox();
                         string[] temp = roomItem.Value.getRoomitem().Split('>');
                         object[] temp2 = valueItems.Value(temp[1]);
+                        
                         if (temp2 != null)
                         {
-                            
+                            roomItem.Value.setCheck(temp[1]);
                             value.Items.AddRange(temp2);
                             roomItem.Value.setComboBox(value);
                             value.Location = new Point(0, count * 25);
@@ -143,13 +146,21 @@ namespace Visualization
 
         private void ButtonCheck_Click(object sender, EventArgs e)
         {
-           
-            if(value.Text != null)
+            LinkedListNode<controller> value = activeRoom.getControl().First;
+
+            while (value != null)
             {
-                connect.senddata(value.Text, true,1);
-                Textbox.ForeColor = Color.Black;
-                Textbox.Text = "Has been checked";
+                if (value.Value.getComboBox() != null && value.Value.getComboBox().Text !="" )
+                {
+                    int temp = int.Parse(value.Value.getComboBox().Text);
+                    connect.senddata(value.Value.getAddress(), value.Value.getcheck(), temp);
+                    Textbox.ForeColor = Color.Black;
+                    Textbox.Text = "Has been checked";
+                   
+                }
+                value = value.Next;
             }
+           
            
         }
 
