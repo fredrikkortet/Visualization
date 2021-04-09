@@ -14,14 +14,15 @@ namespace Visualization
         private DeviceOpenError e_open;
         private DeviceWriteError e_write;
         private ClassCreator ClassCreatorObj;
-        private GroupDataClient g;
+        private GroupDataClient G; 
         private IConnectionCustom2 c;
+        private DPT_info.DPT_info.DPT_conversion dpt = new DPT_info.DPT_info.DPT_conversion();
         string id_str = "";//inside get connection
         string parameters; // inside get connection
         public Boolean checker = false;
 
 
-        public string getConnection_Int() 
+        public string getConnection_Int()
         {
             try
             {
@@ -43,14 +44,15 @@ namespace Visualization
                         parameters = parameters + Convert.ToChar(con.wszParameters[i]);
 
                     }
-                    id_str =gu_id.ToString();
+                    id_str = gu_id.ToString();
                 }
                 return id_str + "|" + parameters;
             }
-            catch(Exception ex) {
+            catch (Exception ex)
+            {
                 throw new Exception("|x| GetConnection: Error opening connection manger. (e1102)" + ex.Message);
             }
-           
+
         }
 
         public void connect_to_buss()
@@ -63,27 +65,39 @@ namespace Visualization
                     "E18Q22510200702GKO");
                 c.Mode = ConnectionMode.ConnectionModeRemoteConnectionless;
                 e_open = c.Open2(Guid.Parse(id_str), parameters);
-                g = new GroupDataClient();
-                g.Connection = (FalconInterfacesLib.IConnection)c;
+                G = new GroupDataClient();
+                G.Connection = (FalconInterfacesLib.IConnection)c;
 
+                if (e_open == DeviceOpenError.DeviceOpenErrorNoError)
+                {
+                    G.GroupDataIndicationWrite += g_IndicationWriteHandler;
+                }
                 checker = true;
-            }catch(Exception e)
+            }
+            catch (Exception e)
             {
                 DialogResult res = MessageBox.Show(e.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
-        public void listning()
-        {
-            if(e_open == DeviceOpenError.DeviceOpenErrorNoError)
-            {
-               //g.GroupDataConfirmationWrite;
-            }
-        }
-        public void senddata(string address, Boolean status , int data)
-        { 
 
-            e_write = (DeviceWriteError)g.Write(address, (FalconInterfacesLib.Priority)Priority.PriorityLow, 6, status, (byte)data);                     
+        public void g_IndicationWriteHandler(int GroupAddress, int RoutingCnt, FalconInterfacesLib.Priority Prio, object data)
+        {
+
+           
+
+            //DialogResult tes = MessageBox.Show(temp, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+             string address = dpt.getAddress(GroupAddress.ToString());
+              string pull = dpt.fromDPT(address,data);
+            //KNX_event(address, data);
+        }
+
+        public void senddata(string address, Boolean status, int data)
+        {
+            string push = dpt.toDPT("5.001", data);
+            e_write = (DeviceWriteError)G.Write(address, (FalconInterfacesLib.Priority)Priority.PriorityLow, 6, status, push);
+           
         }
 
         public void disconnect()
@@ -92,7 +106,7 @@ namespace Visualization
             {
                 c.Mode = ConnectionMode.ConnectionModeClosed;
                 c = null;
-                g = null;
+                G = null;
                 checker = false;
             }
             else
@@ -101,5 +115,6 @@ namespace Visualization
             }
         }
     }
-
 }
+
+

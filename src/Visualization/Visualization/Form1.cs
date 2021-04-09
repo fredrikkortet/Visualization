@@ -45,7 +45,7 @@ namespace Visualization
             if (savefile.ShowDialog().Equals(System.Windows.Forms.DialogResult.OK))
             {
                 StreamWriter writefile = new StreamWriter(File.Create(savefile.FileName));
-                writefile.Write(Treeview.Text);
+                writefile.Write(Textbox.Text);
                 writefile.Dispose();
             }
         }
