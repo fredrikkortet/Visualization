@@ -20,6 +20,7 @@ namespace Visualization
         string parameters; // inside get connection
         public Boolean checker = false;
 
+
         public string getConnection_Int() 
         {
             try
@@ -54,17 +55,23 @@ namespace Visualization
 
         public void connect_to_buss()
         {
-            
-            //disconnect();
-            ClassCreatorObj = new ClassCreator();
-            c = ClassCreatorObj.CreateInstanceLic("Falcon.ConnectionObject.1", (tagCLSCTX)4, "", 
-                "E18Q22510200702GKO");
-            c.Mode = ConnectionMode.ConnectionModeRemoteConnectionless;
-            e_open = c.Open2(Guid.Parse(id_str), parameters);
-            g = new GroupDataClient();
-            g.Connection = (FalconInterfacesLib.IConnection)c;
+            try
+            {
+                //disconnect();
+                ClassCreatorObj = new ClassCreator();
+                c = ClassCreatorObj.CreateInstanceLic("Falcon.ConnectionObject.1", (tagCLSCTX)4, "",
+                    "E18Q22510200702GKO");
+                c.Mode = ConnectionMode.ConnectionModeRemoteConnectionless;
+                e_open = c.Open2(Guid.Parse(id_str), parameters);
+                g = new GroupDataClient();
+                g.Connection = (FalconInterfacesLib.IConnection)c;
 
-            checker = true; 
+                checker = true;
+            }catch(Exception e)
+            {
+                DialogResult res = MessageBox.Show(e.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
         public void listning()
         {
@@ -74,28 +81,24 @@ namespace Visualization
             }
         }
         public void senddata(string address, Boolean status , int data)
-        {
-          
-            if (data != 0)
-            {
-                e_write = (DeviceWriteError)g.Write(address, (FalconInterfacesLib.Priority)Priority.PriorityLow, 6, status, (byte)data);
-            }
-            else
-            {
-                DialogResult  warningbox = MessageBox.Show("No data has been inserted"," " , MessageBoxButtons.OK,MessageBoxIcon.Error);
+        { 
 
-            }
-                      
+            e_write = (DeviceWriteError)g.Write(address, (FalconInterfacesLib.Priority)Priority.PriorityLow, 6, status, (byte)data);                     
         }
 
         public void disconnect()
         {
-               
-            c.Mode = ConnectionMode.ConnectionModeClosed;
-            c = null;
-            g = null;
-            checker = false;
-         
+            if (c != null)
+            {
+                c.Mode = ConnectionMode.ConnectionModeClosed;
+                c = null;
+                g = null;
+                checker = false;
+            }
+            else
+            {
+                DialogResult res = MessageBox.Show("No connection found!", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 

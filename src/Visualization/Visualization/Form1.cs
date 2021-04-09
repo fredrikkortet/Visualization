@@ -30,8 +30,8 @@ namespace Visualization
             {
                 linkedRooms.Clear();
                 Treeview.Nodes.Clear();
-                StreamReader read = new StreamReader(File.OpenRead(openfile.FileName),System.Text.Encoding.GetEncoding(1252),true);
-                
+                StreamReader read = new StreamReader(File.OpenRead(openfile.FileName), System.Text.Encoding.GetEncoding(1252), true);
+
                 function.makeTree(read, Treeview);
             }
 
@@ -62,7 +62,7 @@ namespace Visualization
 
             if (e.Node.Nodes.Count == 0)
             {
-                object[] test = {1,2,3 };
+                object[] test = { 1, 2, 3 };
                 addressPanel.Controls.Clear();
                 infoPanel.Controls.Clear();
                 valuePanel.Controls.Clear();
@@ -91,7 +91,7 @@ namespace Visualization
                         value = new ComboBox();
                         string[] temp = roomItem.Value.getRoomitem().Split('>');
                         object[] temp2 = valueItems.Value(temp[1]);
-                        
+
                         if (temp2 != null)
                         {
                             roomItem.Value.setCheck(temp[1]);
@@ -112,7 +112,7 @@ namespace Visualization
                             count++;
                         }
                         roomItem = roomItem.Next;
-                        
+
 
                     }
                 }
@@ -122,56 +122,57 @@ namespace Visualization
 
         private void connection_Click(object sender, EventArgs e)
         {
-            string message = "Connected to the driver!";
-            string antimessage = "Was not able to connect to the driver!";
-
-            if(!connect.checker)
-            {
+            string message = "Connected to the driver!\n";
             connect.getConnection_Int();
             connect.connect_to_buss();
             Textbox.ForeColor = Color.Green;
-            
-            Textbox.Text = " " + message;
-
-            }
-            else
-            {
-                
-                Textbox.ForeColor = Color.Red;
-                Textbox.Text = antimessage; 
-            }
-            
-           
+            Textbox.Text += message;
         }
 
         private void ButtonCheck_Click(object sender, EventArgs e)
         {
-            LinkedListNode<controller> value = activeRoom.getControl().First;
-
-            while (value != null)
+            if (activeRoom != null)
             {
-                if (value.Value.getComboBox() != null && value.Value.getComboBox().Text !="" )
+                LinkedListNode<controller> value = activeRoom.getControl().First;
+
+                int nodata = 0;
+                while (value != null)
                 {
-                    int temp = int.Parse(value.Value.getComboBox().Text);
-                    connect.senddata(value.Value.getAddress(), value.Value.getcheck(), temp);
-                    Textbox.ForeColor = Color.Black;
-                    Textbox.Text = "Has been checked";
-                   
+
+                    if (value.Value.getComboBox() != null && value.Value.getComboBox().Text != "")
+                    {
+
+                        int temp = int.Parse(value.Value.getComboBox().Text);
+                        connect.senddata(value.Value.getAddress(), value.Value.getcheck(), temp);
+                        Textbox.ForeColor = Color.Black;
+                        Textbox.Text += "Has been checked\n";
+                        nodata++;
+
+                    }
+
+                    value = value.Next;
+
                 }
-                value = value.Next;
+                if (nodata == 0)
+                {
+                    DialogResult res = MessageBox.Show("Empty data has been inserted!", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
-           
-           
+            else
+            {
+                DialogResult res = MessageBox.Show("No Imported File!", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+
         }
 
         private void cancelbutton_Click(object sender, EventArgs e)
         {
 
             connect.disconnect();
-           
             Textbox.ForeColor = Color.Red;
-            Textbox.Text = "Disconnected";
-           
+            Textbox.Text += "Disconnected\n";
+
         }
     }
 }
