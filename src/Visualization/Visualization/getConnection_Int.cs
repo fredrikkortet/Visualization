@@ -20,10 +20,18 @@ namespace Visualization
         string id_str = "";//inside get connection
         string parameters; // inside get connection
         public Boolean checker = false;
+        private RichTextBox feedback;
 
-
+        public Falcon(RichTextBox box)
+        {
+            feedback = box;
+        }
         public string getConnection_Int()
         {
+            if (c != null)
+            {
+                return null;
+            }
             try
             {
                 ConnectionManager cm = new ConnectionManager();
@@ -48,6 +56,7 @@ namespace Visualization
                 }
                 return id_str + "|" + parameters;
             }
+        
             catch (Exception ex)
             {
                 throw new Exception("|x| GetConnection: Error opening connection manger. (e1102)" + ex.Message);
@@ -57,6 +66,7 @@ namespace Visualization
 
         public void connect_to_buss()
         {
+           
             try
             {
                 //disconnect();
@@ -83,19 +93,17 @@ namespace Visualization
 
         public void g_IndicationWriteHandler(int GroupAddress, int RoutingCnt, FalconInterfacesLib.Priority Prio, object data)
         {
-
+            string address = GroupAddress.ToString("X");
+            string dateTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ff");
+            string pull = dpt.fromDPT("5.001", data);
+            string temp = pull + " " + address + " " + dateTime+"\n";
+            feedback.Text += temp;
            
+         }
 
-            //DialogResult tes = MessageBox.Show(temp, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-             string address = dpt.getAddress(GroupAddress.ToString());
-              string pull = dpt.fromDPT(address,data);
-            //KNX_event(address, data);
-        }
-
-        public void senddata(string address, Boolean status, int data)
+        public void senddata(string address, Boolean status, int data,string dptvalue)
         {
-            string push = dpt.toDPT("5.001", data);
+            string push = dpt.toDPT(dptvalue, data);
             e_write = (DeviceWriteError)G.Write(address, (FalconInterfacesLib.Priority)Priority.PriorityLow, 6, status, push);
            
         }
@@ -113,6 +121,10 @@ namespace Visualization
             {
                 DialogResult res = MessageBox.Show("No connection found!", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+        public void  KNX_event(string address , object data)
+        {
+           
         }
     }
 }

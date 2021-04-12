@@ -50,7 +50,6 @@ namespace Visualization
             this.valuePanel = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.connection = new System.Windows.Forms.Button();
             this.cancelbutton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -83,7 +82,7 @@ namespace Visualization
             // ButtonCheck
             // 
             this.ButtonCheck.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.ButtonCheck.Location = new System.Drawing.Point(801, 645);
+            this.ButtonCheck.Location = new System.Drawing.Point(739, 645);
             this.ButtonCheck.Name = "ButtonCheck";
             this.ButtonCheck.Size = new System.Drawing.Size(100, 50);
             this.ButtonCheck.TabIndex = 5;
@@ -233,17 +232,6 @@ namespace Visualization
             this.panel1.Size = new System.Drawing.Size(789, 493);
             this.panel1.TabIndex = 11;
             // 
-            // connection
-            // 
-            this.connection.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.connection.Location = new System.Drawing.Point(637, 645);
-            this.connection.Name = "connection";
-            this.connection.Size = new System.Drawing.Size(100, 50);
-            this.connection.TabIndex = 12;
-            this.connection.Text = "Connection";
-            this.connection.UseVisualStyleBackColor = true;
-            this.connection.Click += new System.EventHandler(this.connection_Click);
-            // 
             // cancelbutton
             // 
             this.cancelbutton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
@@ -262,7 +250,6 @@ namespace Visualization
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(147)))), ((int)(((byte)(147)))));
             this.ClientSize = new System.Drawing.Size(1204, 727);
             this.Controls.Add(this.cancelbutton);
-            this.Controls.Add(this.connection);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
@@ -309,7 +296,6 @@ namespace Visualization
         private System.Windows.Forms.Panel valuePanel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button connection;
         private System.Windows.Forms.Button cancelbutton;
     }
 }

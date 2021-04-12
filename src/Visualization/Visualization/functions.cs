@@ -7,7 +7,6 @@ using System.Windows.Forms;
 
 namespace Visualization
 {
-
     class functions
     {
          LinkedList<Room> linkedRooms ;

@@ -11,7 +11,7 @@ namespace Visualization
         static LinkedList<Room> linkedRooms = new LinkedList<Room>();
         functions function = new functions(linkedRooms);
         Alternative valueItems = new Alternative();
-        Falcon connect = new Falcon();
+        Falcon connect;
         Room activeRoom;
 
 
@@ -19,6 +19,7 @@ namespace Visualization
         public Window()
         {
             InitializeComponent();
+            connect = new Falcon(Textbox);
         }
 
         private void StripOpen_Click(object sender, EventArgs e)
@@ -120,18 +121,19 @@ namespace Visualization
 
         }
 
-        private void connection_Click(object sender, EventArgs e)
-        {
-            string message = "Connected to the driver!\n";
-            connect.getConnection_Int();
-            connect.connect_to_buss();
-            Textbox.ForeColor = Color.Green;
-            Textbox.Text += message;
-        }
+
 
         private void ButtonCheck_Click(object sender, EventArgs e)
         {
-            if (activeRoom != null)
+            string co = connect.getConnection_Int();
+            if(co != null)
+            {
+                string message = "Connected to the driver!\n";
+                connect.connect_to_buss();
+                Textbox.Text += message;
+            }
+           
+           if (activeRoom != null)
             {
                 LinkedListNode<controller> value = activeRoom.getControl().First;
 
@@ -143,9 +145,7 @@ namespace Visualization
                     {
 
                         int temp = int.Parse(value.Value.getComboBox().Text);
-                        connect.senddata(value.Value.getAddress(), value.Value.getcheck(), temp);
-                        Textbox.ForeColor = Color.Black;
-                        Textbox.Text += "Has been checked\n";
+                        connect.senddata(value.Value.getAddress(), value.Value.getcheck(), temp,value.Value.getDpt());
                         nodata++;
 
                     }
@@ -153,6 +153,9 @@ namespace Visualization
                     value = value.Next;
 
                 }
+                
+                Textbox.ForeColor = Color.Green;
+                Textbox.Text += "Has been checked\n";
                 if (nodata == 0)
                 {
                     DialogResult res = MessageBox.Show("Empty data has been inserted!", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -162,6 +165,7 @@ namespace Visualization
             {
                 DialogResult res = MessageBox.Show("No Imported File!", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
 
 
         }
