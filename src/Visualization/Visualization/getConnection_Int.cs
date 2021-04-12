@@ -127,6 +127,22 @@ namespace Visualization
            
         }
     }
+
+
+
+  /*  Private Function getAddress(ByVal adr As String) As String
+Dim adress As String
+
+adress = HexToBin(adr)
+
+adress = StrDup(16 - adress.Length, "0") & adress
+
+adress = BinToDec(adress.Substring(1, 4)) & "/" & BinToDec(adress.Substring(5, 3)) & "/" & BinToDec(adress.Substring(8, 8))
+
+Return adress
+End Function*/
+
+
 }
 
 
