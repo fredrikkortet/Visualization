@@ -5,6 +5,7 @@ using FalconClientComponentsLib;
 using EibaClassCreatorLib;
 using System.Windows.Forms;
 
+
 namespace Visualization
 {
 
@@ -14,13 +15,15 @@ namespace Visualization
         private DeviceOpenError e_open;
         private DeviceWriteError e_write;
         private ClassCreator ClassCreatorObj;
-        private GroupDataClient G; 
+        private GroupDataClient G;
         private IConnectionCustom2 c;
         private DPT_info.DPT_info.DPT_conversion dpt = new DPT_info.DPT_info.DPT_conversion();
         string id_str = "";//inside get connection
         string parameters; // inside get connection
         public Boolean checker = false;
         private RichTextBox feedback;
+        private Room activeRoom;
+        
 
         public Falcon(RichTextBox box)
         {
@@ -56,7 +59,7 @@ namespace Visualization
                 }
                 return id_str + "|" + parameters;
             }
-        
+
             catch (Exception ex)
             {
                 throw new Exception("|x| GetConnection: Error opening connection manger. (e1102)" + ex.Message);
@@ -66,7 +69,7 @@ namespace Visualization
 
         public void connect_to_buss()
         {
-           
+
             try
             {
                 //disconnect();
@@ -94,18 +97,19 @@ namespace Visualization
         public void g_IndicationWriteHandler(int GroupAddress, int RoutingCnt, FalconInterfacesLib.Priority Prio, object data)
         {
             string address = GroupAddress.ToString("X");
+            address = " " + getAddress(address)+ " ";
             string dateTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ff");
-            string pull = dpt.fromDPT("5.001", data);
-            string temp = pull + " " + address + " " + dateTime+"\n";
+            string pull = dpt.fromDPT(activeRoom.searchroom(address), data);
+            string temp = pull  + " " + address + " " + "/" + dateTime + "\n";
             feedback.Text += temp;
-           
-         }
 
-        public void senddata(string address, Boolean status, int data,string dptvalue)
+        }
+
+        public void senddata(string address, Boolean status, int data, string dptvalue)
         {
             string push = dpt.toDPT(dptvalue, data);
             e_write = (DeviceWriteError)G.Write(address, (FalconInterfacesLib.Priority)Priority.PriorityLow, 6, status, push);
-           
+
         }
 
         public void disconnect()
@@ -122,27 +126,23 @@ namespace Visualization
                 DialogResult res = MessageBox.Show("No connection found!", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-        public void  KNX_event(string address , object data)
+   
+        private string getAddress(string adr)
         {
-           
+            string adress = "";
+            adress = Convert.ToString(Convert.ToInt32(adr,16), 2);
+            adress = adress.PadLeft(16 - adress.Length, '0');
+            int dec0 = Convert.ToInt32(adress.Substring(0, 4),2);
+            int dec1 = Convert.ToInt32(adress.Substring(4, 3),2);
+            int dec2 = Convert.ToInt32(adress.Substring(7, 8),2)-1;
+            adress = (dec0 + "/" + dec1 + "/" + dec2);
+
+            return adress;
+        }
+        public void setRoom(Room activeRoom)
+        {
+            this.activeRoom = activeRoom;
         }
     }
 
-
-
-  /*  Private Function getAddress(ByVal adr As String) As String
-Dim adress As String
-
-adress = HexToBin(adr)
-
-adress = StrDup(16 - adress.Length, "0") & adress
-
-adress = BinToDec(adress.Substring(1, 4)) & "/" & BinToDec(adress.Substring(5, 3)) & "/" & BinToDec(adress.Substring(8, 8))
-
-Return adress
-End Function*/
-
-
 }
-
-

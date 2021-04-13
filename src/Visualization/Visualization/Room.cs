@@ -24,6 +24,22 @@ namespace Visualization {
 			return  addBool;
 		}
 
+		public string searchroom(string id)
+        {
+			LinkedListNode<controller> temp = this.roomItems.First;
+
+			while (temp != null)
+            {
+                if (id.Equals(temp.Value.getAddress())) 
+				{
+					return temp.Value.getDpt();
+				}
+				temp = temp.Next;
+			}
+			return null;
+			
+		}
+
 		public void addItem(string value, string address)
 		{
 				controller items = new controller(value, address);

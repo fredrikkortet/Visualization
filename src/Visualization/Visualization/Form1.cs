@@ -12,7 +12,7 @@ namespace Visualization
         functions function = new functions(linkedRooms);
         Alternative valueItems = new Alternative();
         Falcon connect;
-        Room activeRoom;
+        public Room activeRoom;
 
 
 
@@ -135,6 +135,7 @@ namespace Visualization
            
            if (activeRoom != null)
             {
+                connect.setRoom(activeRoom);
                 LinkedListNode<controller> value = activeRoom.getControl().First;
 
                 int nodata = 0;
@@ -153,9 +154,6 @@ namespace Visualization
                     value = value.Next;
 
                 }
-                
-                Textbox.ForeColor = Color.Green;
-                Textbox.Text += "Has been checked\n";
                 if (nodata == 0)
                 {
                     DialogResult res = MessageBox.Show("Empty data has been inserted!", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -177,6 +175,10 @@ namespace Visualization
             Textbox.ForeColor = Color.Red;
             Textbox.Text += "Disconnected\n";
 
+        }
+        public Room getRoom()
+        {
+            return activeRoom;
         }
     }
 }
