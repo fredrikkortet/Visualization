@@ -180,5 +180,11 @@ namespace Visualization
         {
             return activeRoom;
         }
+
+        private void StripViewHelp_Click(object sender, EventArgs e)
+        {
+            Form3 helpdesk = new Form3();
+            helpdesk.Show();
+        }
     }
 }

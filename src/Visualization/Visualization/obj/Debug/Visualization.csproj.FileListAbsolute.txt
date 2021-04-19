@@ -39,3 +39,4 @@ C:\Users\rohul\OneDrive\Desktop\File\Ex_jobb\Visualization\src\Visualization\Vis
 C:\Users\rohul\OneDrive\Desktop\File\Ex_jobb\Visualization\src\Visualization\Visualization\obj\Debug\Interop.POWERMANAGERLib.dll
 C:\Users\rohul\OneDrive\Desktop\File\Ex_jobb\Visualization\src\Visualization\Visualization\obj\Debug\Visualization.csproj.ResolveComReference.cache
 C:\Users\rohul\OneDrive\Desktop\File\Ex_jobb\Visualization\src\Visualization\Visualization\obj\Debug\Visualization.csproj.CopyComplete
+C:\Users\rohul\OneDrive\Desktop\File\Ex_jobb\Visualization\src\Visualization\Visualization\obj\Debug\Visualization.Form3.resources

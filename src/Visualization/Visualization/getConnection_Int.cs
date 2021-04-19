@@ -107,9 +107,22 @@ namespace Visualization
 
         public void senddata(string address, Boolean status, int data, string dptvalue)
         {
-            string push = dpt.toDPT(dptvalue, data);
-            e_write = (DeviceWriteError)G.Write(address, (FalconInterfacesLib.Priority)Priority.PriorityLow, 6, status, push);
-
+            if(dptvalue == "5.001" && (data < 0 || data > 100) )
+            {
+                DialogResult d = MessageBox.Show("Control the value that you have inserted! " + address, "Warning" ,MessageBoxButtons.OK, MessageBoxIcon.Warning );
+                return;
+            }
+            else if (dptvalue!="5.001" && (data < 0 || data >1))
+            {
+                DialogResult d = MessageBox.Show("Control the value that you have inserted! " + address, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else
+            {
+                string push = dpt.toDPT(dptvalue, data);
+                e_write = (DeviceWriteError)G.Write(address, (FalconInterfacesLib.Priority)Priority.PriorityLow, 6, status, push);
+            }
+           
         }
 
         public void disconnect()

@@ -40,7 +40,6 @@ namespace Visualization
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.StripOpen = new System.Windows.Forms.ToolStripMenuItem();
             this.StripSave = new System.Windows.Forms.ToolStripMenuItem();
-            this.StripSaveAS = new System.Windows.Forms.ToolStripMenuItem();
             this.StripHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.StripViewHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.StripAbout = new System.Windows.Forms.ToolStripMenuItem();
@@ -123,8 +122,7 @@ namespace Visualization
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.StripOpen,
-            this.StripSave,
-            this.StripSaveAS});
+            this.StripSave});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
@@ -146,12 +144,6 @@ namespace Visualization
             this.StripSave.Text = "Save";
             this.StripSave.Click += new System.EventHandler(this.StripSave_Click);
             // 
-            // StripSaveAS
-            // 
-            this.StripSaveAS.Name = "StripSaveAS";
-            this.StripSaveAS.Size = new System.Drawing.Size(178, 22);
-            this.StripSaveAS.Text = "Save As...";
-            // 
             // StripHelp
             // 
             this.StripHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -168,6 +160,7 @@ namespace Visualization
             | System.Windows.Forms.Keys.H)));
             this.StripViewHelp.Size = new System.Drawing.Size(202, 22);
             this.StripViewHelp.Text = "View Help";
+            this.StripViewHelp.Click += new System.EventHandler(this.StripViewHelp_Click);
             // 
             // StripAbout
             // 
@@ -286,7 +279,6 @@ namespace Visualization
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem StripOpen;
         private System.Windows.Forms.ToolStripMenuItem StripSave;
-        private System.Windows.Forms.ToolStripMenuItem StripSaveAS;
         private System.Windows.Forms.ToolStripMenuItem StripHelp;
         private System.Windows.Forms.ToolStripMenuItem StripViewHelp;
         private System.Windows.Forms.ToolStripMenuItem StripAbout;
